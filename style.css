@@ -29,7 +29,7 @@ h1, h2, h3, .logo {
     letter-spacing: 1px;
 }
 
-/* Latar Belakang Gambar Kustom dengan Overlay Cyberpunk */
+/* Latar Belakang Gambar Kustom */
 .cyber-bg {
     position: fixed;
     top: 0;
@@ -44,7 +44,6 @@ h1, h2, h3, .logo {
     background-repeat: no-repeat;
 }
 
-/* Overlay Gelap + Efek Neon Tint agar tulisan tetap mudah dibaca */
 .cyber-bg::before {
     content: '';
     position: absolute;
@@ -56,7 +55,6 @@ h1, h2, h3, .logo {
     z-index: -1;
 }
 
-/* Ornamen lingkaran blur bawaan */
 .circle {
     position: absolute;
     border-radius: 50%;
@@ -80,7 +78,7 @@ h1, h2, h3, .logo {
     left: -5%;
 }
 
-/* Spesifikasi Glassmorphism Card */
+/* Glassmorphism Card */
 .glass-card {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
@@ -90,7 +88,6 @@ h1, h2, h3, .logo {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-/* Neon Text Utilities */
 .neon-text-blue {
     color: var(--cyber-blue);
     text-shadow: 0 0 8px var(--cyber-blue);
@@ -132,7 +129,7 @@ nav a {
     text-transform: uppercase;
 }
 
-nav a:hover, nav a:focus {
+nav a:hover {
     color: var(--cyber-blue);
     text-shadow: 0 0 10px var(--cyber-blue);
 }
@@ -146,34 +143,19 @@ nav a:hover, nav a:focus {
     box-shadow: 0 0 8px var(--cyber-pink);
 }
 
-/* Container Utama */
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 40px auto;
 }
 
-/* KOLOM BROADCAST (MELEBAR PENUH) */
+/* KOLOM BROADCAST MELEBAR FULL */
 .broadcast-container {
-    padding: 20px 30px;
+    padding: 20px;
     margin-bottom: 50px;
     border-left: 4px solid var(--cyber-pink);
-    border-right: 4px solid var(--cyber-pink);
-    position: relative;
-    overflow: hidden;
     width: 100%;
     box-sizing: border-box;
-}
-
-.broadcast-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, rgba(255,0,127,0.08) 0%, rgba(0,240,255,0.02) 50%, rgba(255,0,127,0.08) 100%);
-    pointer-events: none;
 }
 
 .broadcast-header {
@@ -186,49 +168,45 @@ nav a:hover, nav a:focus {
 .broadcast-header h2 {
     font-size: 16px;
     color: #fff;
-    letter-spacing: 2px;
 }
 
 .live-indicator {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     background-color: var(--cyber-pink);
     border-radius: 50%;
-    box-shadow: 0 0 12px var(--cyber-pink);
+    box-shadow: 0 0 10px var(--cyber-pink);
     animation: pulse 1.5s infinite;
 }
 
-/* Area Ticker Berjalan Melebar Luas */
+/* PERBAIKAN TOTAL TEKS TICKER BERJALAN */
 .broadcast-ticker {
     width: 100%;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 14px 20px;
-    border-radius: 8px;
-    border: 1px solid rgba(0, 240, 255, 0.2);
-    box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.1);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .ticker-wrap {
     display: flex;
-    white-space: nowrap;
     width: max-content;
-    animation: ticker 30s linear infinite;
+    white-space: nowrap;
+    animation: scrolling-ticker 25s linear infinite;
 }
 
 .ticker-item {
     display: inline-block;
-    padding-right: 100px;
+    padding-right: 60px;
     color: #b0c2ff;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    font-size: 15px;
+    font-weight: 500;
 }
 
-.ticker-item i {
-    color: var(--cyber-blue);
-    margin-right: 8px;
-    text-shadow: 0 0 8px var(--cyber-blue);
+@keyframes scrolling-ticker {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-33.33%, 0, 0); }
 }
 
 /* KOLOM PRODUK */
@@ -238,9 +216,6 @@ nav a:hover, nav a:focus {
     border-bottom: 1px solid var(--glass-border);
     padding-bottom: 10px;
     color: #fff;
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .product-grid {
@@ -252,8 +227,7 @@ nav a:hover, nav a:focus {
 
 .product-card {
     padding: 20px;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    position: relative;
+    transition: all 0.3s;
 }
 
 .product-card:hover {
@@ -276,7 +250,6 @@ nav a:hover, nav a:focus {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: saturate(1.2) brightness(0.9);
 }
 
 .badge {
@@ -287,11 +260,10 @@ nav a:hover, nav a:focus {
     font-weight: bold;
     padding: 4px 10px;
     border-radius: 4px;
-    letter-spacing: 1px;
 }
 
-.badge-pink { background: var(--cyber-pink); color: #fff; box-shadow: 0 0 8px var(--cyber-pink); }
-.badge-blue { background: var(--cyber-blue); color: #000; box-shadow: 0 0 8px var(--cyber-blue); }
+.badge-pink { background: var(--cyber-pink); color: #fff; }
+.badge-blue { background: var(--cyber-blue); color: #000; }
 
 .product-card h3 {
     font-size: 18px;
@@ -304,11 +276,6 @@ nav a:hover, nav a:focus {
     color: #8a8ab0;
     line-height: 1.4;
     margin-bottom: 20px;
-    height: 42px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 .product-footer {
@@ -320,7 +287,6 @@ nav a:hover, nav a:focus {
 .product-footer .price {
     font-family: 'Orbitron', sans-serif;
     font-size: 18px;
-    font-weight: 700;
     color: var(--cyber-blue);
 }
 
@@ -332,49 +298,36 @@ nav a:hover, nav a:focus {
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
+    font-size: 20px;
     transition: all 0.3s;
 }
 
 .btn-buy:hover {
     background: var(--cyber-blue);
     color: #000;
-    box-shadow: 0 0 15px var(--cyber-blue);
 }
 
-/* KOLOM KERANJANG BELANJA */
+/* KERANJANG */
 .cart-container {
     padding: 30px;
     border-left: 4px solid var(--cyber-blue);
 }
 
-.cart-container h2 {
-    font-size: 18px;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
 .cart-list {
     list-style: none;
-    max-height: 250px;
-    overflow-y: auto;
-    margin-bottom: 20px;
 }
 
 .cart-list li {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 12px 10px;
+    padding: 12px 0;
     border-bottom: 1px solid var(--glass-border);
-    font-size: 16px;
 }
 
 .empty-msg {
     color: #61618a;
-    font-style: italic;
     text-align: center;
-    padding: 20px 0 !important;
-    border: none !important;
+    padding: 20px 0;
 }
 
 .remove-item-btn {
@@ -382,7 +335,6 @@ nav a:hover, nav a:focus {
     border: none;
     color: var(--cyber-pink);
     cursor: pointer;
-    font-size: 14px;
 }
 
 .cart-summary {
@@ -390,19 +342,7 @@ nav a:hover, nav a:focus {
     flex-direction: column;
     align-items: flex-end;
     gap: 15px;
-    border-top: 1px solid var(--glass-border);
-    padding-top: 20px;
-}
-
-.total-box {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-#cart-total {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 22px;
-    margin-left: 10px;
+    margin-top: 20px;
 }
 
 .btn-cyber-primary {
@@ -411,48 +351,69 @@ nav a:hover, nav a:focus {
     color: white;
     padding: 14px 28px;
     font-weight: 700;
-    letter-spacing: 1px;
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
-    font-size: 16px;
-}
-
-.btn-cyber-primary:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 25px rgba(255, 0, 127, 0.7);
 }
 
 footer {
     text-align: center;
     padding: 40px 20px;
     color: #53537a;
-    font-size: 14px;
-    border-top: 1px solid var(--glass-border);
 }
 
-/* TOMBOL WHATSAPP MELAYANG CYBERPUNK GLASS */
+/* PERBAIKAN TOMBOL WHATSAPP & TULISAN CONTACT OWNER */
 .cyber-wa-float {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 25px;
+    right: 25px;
     width: 60px;
     height: 60px;
-    background: rgba(0, 240, 255, 0.1);
+    background: rgba(0, 240, 255, 0.15);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 2px solid var(--cyber-blue);
-    color: var(--cyber-blue);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 28px;
+    z-index: 99999; /* Posisi mutlak di paling atas layar */
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
     text-decoration: none;
-    z-index: 99999; /* DINAIKKAN MENJADI LAYER UTAMA SUPAYA BISA DIKLIK */
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+/* Styling Ukuran Logo SVG */
+.wa-svg-icon {
+    width: 28px;
+    height: 28px;
+    fill: var(--cyber-blue); /* Warna cyan cyberpunk */
+    transition: fill 0.3s;
+}
+
+/* PERBAIKAN TULISAN: Perkecil, pas, dan rapi di sebelah tombol */
+.wa-tooltip {
+    position: absolute;
+    right: 70px; /* Jarak aman di samping kiri tombol bulat */
+    background: #0a0a12;
+    border: 1px solid var(--cyber-blue);
+    color: var(--cyber-blue);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px; /* Ukuran font diperkecil signifikan */
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+    pointer-events: none;
+}
+
+.cyber-wa-float:hover .wa-svg-icon {
+    fill: #fff;
+}
+
+.cyber-wa-float:hover {
+    background: rgba(255, 0, 127, 0.2);
+    border-color: var(--cyber-pink);
+    box-shadow: 0 0 20px var(--cyber-pink);
 }
 
 .wa-glow-ring {
@@ -462,20 +423,23 @@ footer {
     border-radius: 50%;
     border: 2px solid var(--cyber-pink);
     animation: wa-pulse 2s infinite;
-    opacity: 0;
 }
 
-.cyber-wa-float:hover {
-    transform: scale(1.1) rotate(10deg);
-    color: #fff;
-    background: rgba(255, 0, 127, 0.2);
-    border-color: var(--cyber-pink);
-    box-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
-.wa-tooltip {
-    position: absolute;
-    right: 75px;
-    background: var(--cyber-black);
-    border: 1px solid var(--cyber-blue);
-    color: var(--cyber-blue);
+@keyframes wa-pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    header { flex-direction: column; gap: 15px; }
+    nav a { margin: 0 10px; }
+    .product-grid { grid-template-columns: 1fr; }
+    /* Menjaga teks tooltip tetap proporsional di HP */
+    .wa-tooltip { font-size: 10px; right: 65px; } 
+}
