@@ -132,18 +132,18 @@
     </a>
 
     <script src="script.js"></script>
-    <!-- 1. Elemen Audio Terintegrasi -->
+    <!-- 1. Elemen Audio Lokal (Memanggil langsung dari folder website Anda) -->
 <audio id="bgMusic" loop preload="auto">
-  <source src="https://mixkit.co" type="audio/mpeg">
+  <source src="musik.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 2. Tombol Musik Melayang (Sudah Dipindah ke Sebelah Kiri / left: 20px) -->
+<!-- 2. Tombol Musik Melayang Posisi Kiri -->
 <button id="musicBtn" onclick="mulaiMusik()" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; width: 55px; height: 55px; border-radius: 50%; border: none; background: #232329; border: 2px solid #00f0ff; color: #00f0ff; cursor: pointer; box-shadow: 0px 0px 10px #00f0ff; font-size: 11px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: bold; line-height: 1.2;">
   <span style="font-size: 16px; margin-bottom: 2px;">🎵</span>
   <span id="btnText">Play</span>
 </button>
 
-<!-- 3. Sistem Penggerak Mandiri -->
+<!-- 3. Sistem Penggerak yang Lebih Ringan -->
 <script>
 function mulaiMusik() {
   var audio = document.getElementById("bgMusic");
@@ -151,16 +151,12 @@ function mulaiMusik() {
   var teks = document.getElementById("btnText");
   
   if (audio.paused) {
-    audio.play().then(function() {
-      teks.innerText = "Mute";
-      tombol.style.background = "#ff0055";
-      tombol.style.borderColor = "#ff0055";
-      tombol.style.boxShadow = "0px 0px 10px #ff0055";
-      tombol.style.color = "#ffffff";
-    }).catch(function(error) {
-      alert("Gagal memutar: Pastikan volume HP Anda aktif!");
-      console.log(error);
-    });
+    audio.play();
+    teks.innerText = "Mute";
+    tombol.style.background = "#ff0055";
+    tombol.style.borderColor = "#ff0055";
+    tombol.style.boxShadow = "0px 0px 10px #ff0055";
+    tombol.style.color = "#ffffff";
   } else {
     audio.pause();
     teks.innerText = "Play";
