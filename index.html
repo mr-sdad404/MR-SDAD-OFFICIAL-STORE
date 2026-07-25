@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MR-SDAD OFFICIAL STORE</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Latar Belakang Gambar Kustom + Animasi Cyberpunk -->
+    <div class="cyber-bg">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+    </div>
+
+    <!-- Header / Navigasi Glassmorphism -->
+    <header class="glass-card">
+        <div class="logo">MR-SDAD <span class="neon-text-blue">OFFICIAL</span></div>
+        <nav>
+            <a href="#broadcast-section"><i class="fa-solid fa-satellite-dish"></i> Broadcast</a>
+            <a href="#product-section"><i class="fa-solid fa-cube"></i> Products</a>
+            <a href="#cart-section" class="cart-nav"><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count">0</span></a>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <!-- KOLOM BROADCAST (Pemberitahuan / Berita Toko Keren) -->
+        <section id="broadcast-section" class="glass-card broadcast-container">
+            <div class="broadcast-header">
+                <span class="live-indicator"></span>
+                <h2><i class="fa-solid fa-bolt-lightning neon-text-pink"></i> LIVE BROADCAST SYSTEM</h2>
+            </div>
+            <div class="broadcast-ticker">
+                <div class="ticker-wrap">
+                    <div class="ticker-item"><i class="fa-solid fa-triangle-exclamation"></i> DEPLOYMENT SUCCESSFUL: MR-SDAD Store kini resmi Open Di Webstore.</div>
+                    <div class="ticker-item"><i class="fa-solid fa-fire"></i> FLASH SALE MR-SDAD STORE: Dapatkan diskon item digital hingga 40% Untuk Min Transaksi Rp 200.000!</div>
+                    <div class="ticker-item"><i class="fa-solid fa-shield-halved"></i> SECURE NODE: Transaksi dijamin aman langsung via enkripsi WhatsApp Owner.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KOLOM PRODUK -->
+        <section id="product-section">
+            <h2 class="section-title"><i class="fa-solid fa-microchip"></i> ALL PRODACT MR-SDAD</h2>
+            <div class="product-grid">
+                
+                <!-- Produk 1 -->
+                <div class="glass-card product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://unsplash.com" alt="Cyber Sewa Bot">
+                        <span class="badge badge-pink">HOT ITEM</span>
+                    </div>
+                    <h3>JASA SEWA MR-SDADBOT MD</h3>
+                    <p class="product-desc">Akses Premium, Fitur 800+, Banyak Kegunaan Dalam satu Akses Bot, On Nonstop (7/24). </p>
+                    <div class="product-footer">
+                        <span class="price">Mulai Rp 10.000</span>
+                        <button class="btn-buy add-to-cart" data-id="1" data-name="Sewa Mr-sdadbot Premium" data-price="10000"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+
+                <!-- Produk 2 -->
+                <div class="glass-card product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://unsplash.com" alt="Cyber Jasa Website">
+                        <span class="badge badge-blue">LIMITED</span>
+                    </div>
+                    <h3>JASA PEMBUATAN WEBSITE</h3>
+                    <p class="product-desc">Proses Cepat, Hasil Sesuai Keinginan (Costom) Harga Terjangkau. </p>
+                    <div class="product-footer">
+                        <span class="price">Mulai Rp 100.000</span>
+                        <button class="btn-buy add-to-cart" data-id="2" data-name="Jasa Pembuatan Website" data-price="100000"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+
+                <!-- Produk 3 -->
+                <div class="glass-card product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://unsplash.com" alt="Cyber Panel">
+                        <span class="badge badge-pink">NEW GEAR</span>
+                    </div>
+                    <h3>Cpanel & Respanel</h3>
+                    <p class="product-desc">Menggunakan Panel Pterodactyl & Server Ocean Digital,setiap akses Memiliki Masa aktif & Garansi 14 Hari</p>
+                    <div class="product-footer">
+                        <span class="price">MULAI Rp 3.000</span>
+                        <button class="btn-buy add-to-cart" data-id="3" data-name="Cpanel & Respanel" data-price="3.000"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- KELOLA PESANAN & TOTAL -->
+        <section id="cart-section" class="glass-card cart-container">
+            <h2><i class="fa-solid fa-terminal"></i> CART_SYSTEM_LOG</h2>
+            <ul id="cart-items" class="cart-list">
+                <li class="empty-msg">Belum ada modul item terpasang di sistem keranjang.</li>
+            </ul>
+            <div class="cart-summary">
+                <div class="total-box">
+                    <span>TOTAL ALOKASI DANA:</span>
+                    <span id="cart-total" class="neon-text-blue">Rp 0</span>
+                </div>
+                <button id="checkout-btn" class="btn-cyber-primary"><i class="fa-solid fa-share-from-square"></i> KIRIM INVOICE KE WHATSAPP</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <span class="neon-text-pink">MR-SDAD</span> CORE SYSTEM. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <!-- TOMBOL WHATSAPP MELAYANG CYBERPUNK -->
+    <a href="https://wa.me." 
+       target="_blank" 
+       class="cyber-wa-float" 
+       aria-label="Hubungi Owner via WhatsApp">
+        <div class="wa-glow-ring"></div>
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="wa-tooltip">CONTACT_OWNER</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+      </html>
+                                           
