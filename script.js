@@ -122,16 +122,28 @@ if (checkoutBtn) {
     });
 }
 
-function toggleMusic() {
+function controlMusic() {
   var music = document.getElementById("bgMusic");
   var btn = document.getElementById("musicBtn");
+  
   if (music.paused) {
-    music.play();
-    btn.innerHTML = "⏸️ Pause";
-    btn.style.background = "#ff1744";
+    // Memutar musik secara langsung saat tombol ditekan oleh user
+    music.play().then(() => {
+      btn.innerHTML = "⏸️ Mute";
+      btn.style.background = "#ff0055";
+      btn.style.borderColor = "#ff0055";
+      btn.style.boxShadow = "0px 0px 10px #ff0055";
+      btn.style.color = "#ffffff";
+    }).catch(error => {
+      console.log("Pemutaran musik diblokir oleh browser:", error);
+    });
   } else {
+    // Menghentikan musik
     music.pause();
     btn.innerHTML = "🎵 Play";
-    btn.style.background = "#00e676";
+    btn.style.background = "#232329";
+    btn.style.borderColor = "#00f0ff";
+    btn.style.boxShadow = "0px 0px 10px #00f0ff";
+    btn.style.color = "#00f0ff";
   }
 }
