@@ -153,13 +153,16 @@ nav a:hover, nav a:focus {
     margin: 40px auto;
 }
 
-/* KOLOM BROADCAST */
+/* KOLOM BROADCAST (MELEBAR PENUH) */
 .broadcast-container {
-    padding: 20px;
+    padding: 20px 30px;
     margin-bottom: 50px;
     border-left: 4px solid var(--cyber-pink);
+    border-right: 4px solid var(--cyber-pink);
     position: relative;
     overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .broadcast-container::before {
@@ -169,7 +172,7 @@ nav a:hover, nav a:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, rgba(255,0,127,0.05) 0%, transparent 100%);
+    background: linear-gradient(90deg, rgba(255,0,127,0.08) 0%, rgba(0,240,255,0.02) 50%, rgba(255,0,127,0.08) 100%);
     pointer-events: none;
 }
 
@@ -177,48 +180,55 @@ nav a:hover, nav a:focus {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .broadcast-header h2 {
     font-size: 16px;
     color: #fff;
+    letter-spacing: 2px;
 }
 
 .live-indicator {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     background-color: var(--cyber-pink);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--cyber-pink);
+    box-shadow: 0 0 12px var(--cyber-pink);
     animation: pulse 1.5s infinite;
 }
 
-/* Efek Ticker Berjalan */
+/* Area Ticker Berjalan Melebar Luas */
 .broadcast-ticker {
     width: 100%;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.1);
 }
 
 .ticker-wrap {
     display: flex;
     white-space: nowrap;
-    animation: ticker 25s linear infinite;
+    width: max-content;
+    animation: ticker 30s linear infinite;
 }
 
 .ticker-item {
-    padding-right: 50px;
-    color: #8fa0dd;
+    display: inline-block;
+    padding-right: 100px;
+    color: #b0c2ff;
     font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .ticker-item i {
     color: var(--cyber-blue);
-    margin-right: 5px;
+    margin-right: 8px;
+    text-shadow: 0 0 8px var(--cyber-blue);
 }
 
 /* KOLOM PRODUK */
@@ -440,7 +450,7 @@ footer {
     align-items: center;
     font-size: 28px;
     text-decoration: none;
-    z-index: 999;
+    z-index: 99999; /* DINAIKKAN MENJADI LAYER UTAMA SUPAYA BISA DIKLIK */
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
 }
@@ -469,22 +479,3 @@ footer {
     background: var(--cyber-black);
     border: 1px solid var(--cyber-blue);
     color: var(--cyber-blue);
-    padding: 5px 12px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 1px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-    white-space: nowrap;
-}
-
-.cyber-wa-float:hover .wa-tooltip {
-    opacity: 1;
-}
-
-/* Animasi-Animasi */
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 1; }
-
