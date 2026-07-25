@@ -121,3 +121,17 @@ if (checkoutBtn) {
         window.open(waURL, '_blank');
     });
 }
+
+function toggleMusic() {
+  var music = document.getElementById("bgMusic");
+  var btn = document.getElementById("musicBtn");
+  if (music.paused) {
+    music.play();
+    btn.innerHTML = "⏸️ Pause";
+    btn.style.background = "#ff1744";
+  } else {
+    music.pause();
+    btn.innerHTML = "🎵 Play";
+    btn.style.background = "#00e676";
+  }
+}
