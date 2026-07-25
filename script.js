@@ -33,24 +33,26 @@ addToCartButtons.forEach(button => {
 // Efek Kilat Kecil Pada Icon Navbar Saat Barang Ditambah
 function flashNavCart() {
     const cartNav = document.querySelector('.cart-nav');
-    cartNav.style.textShadow = "0 0 20px #00f0ff, 0 0 30px #00f0ff";
-    setTimeout(() => {
-        cartNav.style.textShadow = "0 0 10px #00f0ff";
-    }, 300);
+    if (cartNav) {
+        cartNav.style.textShadow = "0 0 20px #00f0ff, 0 0 30px #00f0ff";
+        setTimeout(() => {
+            cartNav.style.textShadow = "0 0 10px #00f0ff";
+        }, 300);
+    }
 }
 
 // Render Ulang Tampilan Interface List Keranjang
 function renderCart() {
     // Hitung total kuantitas item
     const totalQty = cart.reduce((acc, item) => acc + item.quantity, 0);
-    cartCount.textContent = totalQty;
+    if (cartCount) cartCount.textContent = totalQty;
 
     // Kosongkan list bawaan
-    cartItemsContainer.innerHTML = '';
+    if (cartItemsContainer) cartItemsContainer.innerHTML = '';
 
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = `<li class="empty-msg">Belum ada modul item terpasang di sistem keranjang.</li>`;
-        cartTotal.textContent = "Rp 0";
+        if (cartItemsContainer) cartItemsContainer.innerHTML = `<li class="empty-msg">Belum ada modul item terpasang di sistem keranjang.</li>`;
+        if (cartTotal) cartTotal.textContent = "Rp 0";
         return;
     }
 
@@ -72,10 +74,10 @@ function renderCart() {
                 </button>
             </div>
         `;
-        cartItemsContainer.appendChild(li);
+        if (cartItemsContainer) cartItemsContainer.appendChild(li);
     });
 
-    cartTotal.textContent = `Rp ${calculatedTotal.toLocaleString('id-ID')}`;
+    if (cartTotal) cartTotal.textContent = `Rp ${calculatedTotal.toLocaleString('id-ID')}`;
 }
 
 // Fungsi Hapus Barang
@@ -85,34 +87,37 @@ window.removeItem = function(id) {
 };
 
 // Tombol Integrasi Checkout Otomatis Mengirim List Pesanan ke WA Owner
-checkoutBtn.addEventListener('click', () => {
-    if (cart.length === 0) {
-        alert("SYSTEM ERROR: Keranjang pesanan Anda kosong!");
-        return;
-    }
+if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+        if (cart.length === 0) {
+            alert("SYSTEM ERROR: Keranjang pesanan Anda kosong!");
+            return;
+        }
 
-    // Bangun struktur text invoice rapi untuk WhatsApp
-    let message = `*MR-SDAD STORE - NEW ORDER REQUEST*\n`;
-    message += `==============================\n\n`;
-    
-    let grandTotal = 0;
-    cart.forEach((item, index) => {
-        const itemTotal = item.price * item.quantity;
-        grandTotal += itemTotal;
-        message += `${index + 1}. *${item.name}*\n`;
-        message += `    Qty: ${item.quantity}x\n`;
-        message += `    Subtotal: Rp ${itemTotal.toLocaleString('id-ID')}\n\n`;
+        // Bangun struktur text invoice rapi untuk WhatsApp
+        let message = `*MR-SDAD STORE - NEW ORDER REQUEST*\n`;
+        message += `==============================\n\n`;
+        
+        let grandTotal = 0;
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            grandTotal += itemTotal;
+            message += `${index + 1}. *${item.name}*\n`;
+            message += `    Qty: ${item.quantity}x\n`;
+            message += `    Subtotal: Rp ${itemTotal.toLocaleString('id-ID')}\n\n`;
+        });
+
+        message += `==============================\n`;
+        message += `*TOTAL TAGIHAN:* Rp ${grandTotal.toLocaleString('id-ID')}\n\n`;
+        message += `Mohon instruksi selanjutnya untuk sistem pembayaran & pengiriman Node.`;
+
+        // Encode text agar aman dibaca URL browser
+        const encodedMessage = encodeURIComponent(message);
+        
+        // PERBAIKAN UTAMA: Format pemanggilan variabel URL WhatsApp yang benar
+        const waURL = `https://wa.me/{ownerWhatsApp}?text=${encodedMessage}`;
+
+        // Alihkan pengguna ke tab WhatsApp baru
+        window.open(waURL, '_blank');
     });
-
-    message += `==============================\n`;
-    message += `*TOTAL TAGIHAN:* Rp ${grandTotal.toLocaleString('id-ID')}\n\n`;
-    message += `Mohon instruksi selanjutnya untuk sistem pembayaran & pengiriman Node.`;
-
-    // Encode text agar aman dibaca URL browser
-    const encodedMessage = encodeURIComponent(message);
-    const waURL = `https://wa.me{ownerWhatsApp}?text=${encodedMessage}`;
-
-    // Alihkan pengguna ke tab WhatsApp baru
-    window.open(waURL, '_blank');
-});
-      
+}
