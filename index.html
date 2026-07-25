@@ -132,13 +132,14 @@
     </a>
 
     <script src="script.js"></script>
-<!-- Elemen audio tersembunyi menggunakan tautan musik langsung -->
-<audio id="bgMusic" loop>
-  <source src="https://soundhelix.com" type="audio/mpeg">
+    
+<!-- Pemutar audio murni (Lebih ringan dan pasti didukung oleh browser) -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="https://mixkit.co" type="audio/mpeg">
 </audio>
 
-<!-- Tombol kontrol musik melayang -->
-<button id="musicBtn" onclick="toggleMusic()" style="position: fixed; bottom: 20px; right: 90px; z-index: 9999; padding: 10px; border-radius: 50%; border: none; background: #00e676; color: white; cursor: pointer; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);">
+<!-- Tombol kontrol musik melayang di atas tombol WhatsApp -->
+<button id="musicBtn" onclick="controlMusic()" style="position: fixed; bottom: 90px; right: 20px; z-index: 9999; width: 50px; height: 50px; border-radius: 50%; border: none; background: #232329; border: 2px solid #00f0ff; color: #00f0ff; cursor: pointer; box-shadow: 0px 0px 10px #00f0ff; font-size: 16px; display: flex; align-items: center; justify-content: center; font-weight: bold;">
   🎵 Play
 </button>
     
