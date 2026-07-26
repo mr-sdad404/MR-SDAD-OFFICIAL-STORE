@@ -325,7 +325,7 @@ function mulaiMusik() {
 }
 </script>
 
-            <!-- POP-UP PROMOSI AWAL MASUK WEBSITE (FIX RUANG GULIR + MULTI BUTTON) -->
+                <!-- POP-UP PROMOSI AWAL MASUK WEBSITE (SISTEM IKLAN BERGANTIAN OTOMATIS) -->
     <div id="promo-modal" style="display: flex; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 5, 10, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 1000000; justify-content: center; align-items: flex-start; padding: 20px; overflow-y: auto;">
         <div class="glass-card" style="width: 100%; max-width: 400px; padding: 25px; border-top: 4px solid var(--cyber-pink); text-align: center; box-shadow: 0 0 30px rgba(255, 0, 127, 0.2); position: relative; animation: popUpMasuk 0.3s ease-out forwards; margin-top: 20px; margin-bottom: 20px;">
             
@@ -334,28 +334,22 @@ function mulaiMusik() {
             
             <!-- Icon & Judul Pengumuman -->
             <h3 style="color: #fff; font-size: 18px; margin-bottom: 5px; font-family: 'Orbitron', sans-serif; letter-spacing: 1px;">📢 MR-SDAD BROADCAST</h3>
-            <p style="font-size: 13px; color: var(--cyber-blue); font-family: 'Orbitron', sans-serif; margin-bottom: 20px; text-shadow: 0 0 5px var(--cyber-blue);">MR-SDAD BROADCAST SYSTEM v3.5.2</p>
+            <p id="promo-version-text" style="font-size: 13px; color: var(--cyber-blue); font-family: 'Orbitron', sans-serif; margin-bottom: 20px; text-shadow: 0 0 5px var(--cyber-blue);">MR-SDAD BROADCAST SYSTEM</p>
             
-            <!-- AREA GAMBAR PROMO.PNG -->
+            <!-- AREA GAMBAR PROMO (DIISI OTOMATIS OLEH JS) -->
             <div style="width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid var(--glass-border); margin-bottom: 15px; box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);">
-                <img src="promo.png" alt="Promo Banner" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                <img id="promo-image-node" src="" alt="Promo Banner" style="width: 100%; height: auto; display: block; object-fit: cover;">
             </div>
             
-            <!-- Isi Teks Informasi / Promosi -->
-            <div style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; text-align: left; line-height: 1.6; font-size: 14px; color: #e0e0ff;">
-                <strong style="color: #ffff00; display: block; margin-bottom: 8px; text-align: center; font-family: 'Orbitron', sans-serif;">🔥 JASA IKLAN 🔥</strong>
-                • 📢 OPEN JASA IKLAN ALLSERVICE!<br>
-                • 🎉 KALIAN BISA PASANG IKLAN/PROMOSI STORE & PRODUCT KALIAN DI SINI!.<br>
-                • 💯 IKLAN ANDA SELALU DITAMPILKAN SETIAP PENGUNJUNG MEMBUKA TAUTAN WEBSITE INI!.<br>
-                • ✅ DAN IKLAN KALIAN AKAN DILENGKAPI TOMBOL OTOMATIS YANG DIARAHKAN KE KONTAK WA/LINK GROUP JB KALIAN!.<br>
-                • 🛍️ BIAYA PEMASANGAN IKLAN, SANGAT BERSAHABAT MULAI Rp 50.000/bln!.<br>
-                • ⚠️ INFO LEBIH JELAS, KLIK TOMBOL LANJUTKAN & KLIK WA OWNER!.
+            <!-- Area Isi Teks Promosi (DIISI OTOMATIS OLEH JS) -->
+            <div id="promo-text-container" style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; text-align: left; line-height: 1.6; font-size: 14px; color: #e0e0ff;">
+                <!-- Konten teks teks iklan berubah di sini -->
             </div>
 
             <!-- DUA TOMBOL HUBUNGI KONTAK & LANJUTKAN KE WEB -->
             <div style="display: flex; flex-direction: column; gap: 10px;">
-                <!-- GANTI LINK DI BAWAH INI DENGAN LINK CHAT WA ATAU LINK GRUP WA ANDA -->
-                <a href="https://chat.whatsapp.com/L16JWG3URT6FWhyzGkndjq?s=cl&p=a&ilr=1" target="_blank" class="btn-cyber-primary" style="display: block; text-decoration: none; background: linear-gradient(135deg, #00ffcc 0%, #00f0ff 100%); color: #000; font-weight: 900; letter-spacing: 1px; font-family: 'Orbitron', sans-serif; box-shadow: 0 0 15px #00ffcc;">
+                <!-- TOMBOL KONTAK (LINK DIISI OTOMATIS OLEH JS) -->
+                <a id="promo-action-link" href="" target="_blank" class="btn-cyber-primary" style="display: block; text-decoration: none; background: linear-gradient(135deg, #00ffcc 0%, #00f0ff 100%); color: #000; font-weight: 900; letter-spacing: 1px; font-family: 'Orbitron', sans-serif; box-shadow: 0 0 15px #00ffcc;">
                     💬 HUBUNGI / JOIN GROUP WA
                 </a>
                 
