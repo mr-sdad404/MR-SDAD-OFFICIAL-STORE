@@ -92,7 +92,7 @@ window.removeItem = function(id) {
 if (checkoutBtn) {
     checkoutBtn.addEventListener('click', () => {
         if (cart.length === 0) {
-            alert("SYSTEM ERROR: Keranjang pesanan Anda kosong!");
+            alert("SYSTEM ERROR: Keranjang pesanan Anda kosong, pilih product yang ingin anda beli lebih dulu klik (+)!");
             return;
         }
 
@@ -117,7 +117,7 @@ if (checkoutBtn) {
         const encodedMessage = encodeURIComponent(message);
         
         // PERBAIKAN: Format pemanggilan variabel URL WhatsApp yang benar ($ ditambahkan)
-        const waURL = `https://wa.me${ownerWhatsApp}?text=${encodedMessage}`;
+        const waURL = `https://wa.me/${ownerWhatsApp}?text=${encodedMessage}`;
 
         // Alihkan pengguna ke tab WhatsApp baru
         window.open(waURL, '_blank');
