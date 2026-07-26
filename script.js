@@ -117,7 +117,7 @@ if (checkoutBtn) {
         const encodedMessage = encodeURIComponent(message);
         
         // PERBAIKAN: Format pemanggilan variabel URL WhatsApp yang benar ($ ditambahkan)
-        const waURL = `https://wa.me{ownerWhatsApp}?text=${encodedMessage}`;
+        const waURL = `https://wa.me/{ownerWhatsApp}?text=${encodedMessage}`;
 
         // Alihkan pengguna ke tab WhatsApp baru
         window.open(waURL, '_blank');
