@@ -124,7 +124,7 @@ header .logo {
     border-left: 4px solid var(--cyber-pink);
     border-right: 4px solid var(--cyber-pink);;
     padding-right: 10px;
-    padding-left: 0;
+    padding-left: 10px;
 }
 
 /* Tombol Tiga Garis (Hamburger) Dipaksa Pindah ke Paling Kiri Layar */
