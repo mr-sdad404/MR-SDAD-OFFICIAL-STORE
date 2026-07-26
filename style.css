@@ -99,10 +99,12 @@ h1, h2, h3, .logo {
 }
 
 /* =========================================================================
-   HEADER & NAVBAR SIDEBAR SYSTEM (DIPERBARUI)
+   HEADER & NAVBAR SIDEBAR SYSTEM (TUKAR POSISI: TOMBOL DI KIRI, LOGO DI KANAN)
    ========================================================================= */
 header {
     display: flex;
+    /* Mengubah arah susunan: Tombol Hamburger duluan (kiri), lalu Logo (kanan) */
+    flex-direction: row-reverse; 
     justify-content: space-between;
     align-items: center;
     padding: 12px 5%;
@@ -117,11 +119,14 @@ header .logo {
     font-size: 20px;
     font-weight: 900;
     color: #fff;
-    border-left: 4px solid var(--cyber-pink);
-    padding-left: 10px;
+    /* Pindahkan garis hiasan neon ke sebelah kanan logo agar lebih estetik */
+    border-right: 4px solid var(--cyber-pink);
+    border-left: none; /* Hapus border kiri lama */
+    padding-right: 10px;
+    padding-left: 0;
 }
 
-/* Tombol Tiga Garis (Hamburger) */
+/* Tombol Tiga Garis (Hamburger) di Pojok Kiri */
 .sidebar-toggle-btn {
     background: transparent;
     border: 1px solid var(--cyber-blue);
