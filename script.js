@@ -275,3 +275,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+// =========================================================================
+// SINKRONISASI PENGENDALI MODAL PROMOSI AWAL MASUK (FITUR BARU)
+// =========================================================================
+window.closePromoModal = function() {
+    const promoModal = document.getElementById('promo-modal');
+    if (promoModal) {
+        promoModal.style.display = "none";
+        // Memastikan scroll layar utama kembali aktif setelah ditutup
+        document.body.style.overflow = "auto"; 
+    }
+};
+
+// Otomatis mengunci scroll utama halaman belakang selama pop-up promosi masih aktif di layar
+document.addEventListener("DOMContentLoaded", () => {
+    const promoModal = document.getElementById('promo-modal');
+    if (promoModal && promoModal.style.display !== "none") {
+        document.body.style.overflow = "hidden";
+    }
+});
+            
