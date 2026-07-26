@@ -98,40 +98,176 @@ h1, h2, h3, .logo {
     text-shadow: 0 0 8px var(--cyber-pink);
 }
 
-/* Header & Nav */
+/* =========================================================================
+   HEADER & NAVBAR SIDEBAR SYSTEM (DIPERBARUI)
+   ========================================================================= */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
-    margin: 20px auto;
+    padding: 12px 5%;
+    margin: 15px auto;
     width: 90%;
     position: sticky;
-    top: 20px;
+    top: 15px;
     z-index: 100;
 }
 
 header .logo {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 900;
     color: #fff;
     border-left: 4px solid var(--cyber-pink);
     padding-left: 10px;
 }
 
-nav a {
-    color: #a0a0c8;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 600;
+/* Tombol Tiga Garis (Hamburger) */
+.sidebar-toggle-btn {
+    background: transparent;
+    border: 1px solid var(--cyber-blue);
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
     transition: all 0.3s;
-    font-size: 16px;
-    text-transform: uppercase;
 }
 
-nav a:hover {
-    color: var(--cyber-blue);
+.sidebar-toggle-btn:hover {
+    box-shadow: 0 0 15px var(--cyber-blue);
+    border-color: #fff;
+}
+
+.sidebar-toggle-btn .bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--cyber-blue);
+    transition: background-color 0.3s;
+}
+
+.sidebar-toggle-btn:hover .bar {
+    background-color: #fff;
+}
+
+/* Kerangka Utama Panel Kontainer Sidebar */
+.cyber-sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Sembunyikan default ke luar layar kanan */
+    width: 280px;
+    height: 100vh;
+    z-index: 100000; /* Lapisan super atas */
+    border-radius: 12px 0 0 12px;
+    border-right: none;
+    border-left: 2px solid var(--cyber-pink);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Ketika Sidebar Diberi Kelas Aktif Lewat JS */
+.cyber-sidebar.active {
+    right: 0;
+}
+
+/* Lapisan Hitam Transparan Latar Belakang Saat Sidebar Terbuka */
+.cyber-sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 5, 10, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 99998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+}
+
+.cyber-sidebar-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Header Atas di Dalam Sidebar */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.sidebar-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.close-sidebar-btn {
+    background: transparent;
+    border: none;
+    color: var(--cyber-pink);
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.3s;
+}
+
+.close-sidebar-btn:hover {
+    transform: rotate(90deg);
+    color: #fff;
+}
+
+/* Struktur Susunan Tautan Menu Vertikal */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-link {
+    color: #a0a0c8;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 10px 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    transition: all 0.3s;
+}
+
+.sidebar-link span {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.sidebar-link:hover {
+    color: #fff;
+    border-bottom-color: var(--cyber-blue);
+    padding-left: 10px;
     text-shadow: 0 0 10px var(--cyber-blue);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 15px;
+    font-size: 11px;
+    font-family: 'Orbitron', sans-serif;
+    color: #48486a;
+    letter-spacing: 1px;
 }
 
 #cart-count {
@@ -141,12 +277,6 @@ nav a:hover {
     border-radius: 20px;
     font-size: 12px;
     box-shadow: 0 0 8px var(--cyber-pink);
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 40px auto;
 }
 
 /* KOLOM BROADCAST MELEBAR FULL */
