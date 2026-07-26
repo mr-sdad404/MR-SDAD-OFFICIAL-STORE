@@ -277,21 +277,65 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =========================================================================
-// SINKRONISASI PENGENDALI MODAL PROMOSI AWAL MASUK
+// DATABASE & LOGIKA PENGACAK IKLAN BERGANTIAN OTOMATIS (BARU)
 // =========================================================================
+
+// Tempat Anda memasukkan daftar teks iklan yang berbeda-beda sesuka hati Anda
+const daftarIklanSdad = [
+    {
+        versi: "MR-SDAD BROADCAST SYSTEM v6.2.5",
+        gambar: "promo.jpg",
+        linkWA: "https://wa.me/6285133431132",
+        htmlTeks: `
+            <strong style="color: #ffff00; display: block; margin-bottom: 8px; text-align: center; font-family: 'Orbitron', sans-serif;">🔥 JASA IKLAN🔥</strong>
+            • 📢 OPEN JASA IKLAN ALL SERVICE!<br>
+            • 🎉 KALIAN BISA PASANG IKLAN/PROMOSI STORE & PRODUCT KALIAN DI SINI!<br>
+            • 💯 IKLAN ANDA SELALU DITAMPILKAN SETIAP PENGUNJUNG MEMBUKA TAUTAN WEB!<br>
+            • ✅ DILENGKAPI TOMBOL OTOMATIS KE KONTAK WA/LINK GROUP JB KALIAN!<br>
+            • 🛍️ BIAYA PEMASANGAN IKLAN SANGAT BERSAHABAT MULAI Rp 50.000/bln!<br>
+            • 👇🏻 INFO LEBIH JELAS, KLIK TOMBOL DI BAWAH!.
+        `
+    },
+    {
+        versi: "MR-SDAD FLASH SALE NODE v2.1.5",
+        gambar: "promo.png", // Menggunakan gambar kedua untuk iklan kedua
+        linkWA: "https://wa.me/6285133431132", // Bisa dimasukkan link grup JB WhatsApp Anda
+        htmlTeks: `
+            <strong style="color: #ff00ff; display: block; margin-bottom: 8px; text-align: center; font-family: 'Orbitron', sans-serif;">⚡ DISKON EVENT SPECIAL ⚡</strong>
+            • 🤖 DISKON SEWA BOT: Dapatkan potongan harga khusus untuk paket Permanen!<br>
+            • 🌐 JASA WEBSITE PRO: Konsultasikan website impian Anda dengan harga promo.<br>
+            • 📦 CPANEL READY: Paket hosting unlimited super cepat harga miring hari ini.<br>
+            • 🔥 Stok terbatas! Klik tombol di bawah untuk join group info/klaim promo Anda sekarang sebelum kehabisan!.
+        `
+    }
+    // Anda bisa menambah objek { ... } ketiga atau keempat di sini jika punya info produk lain
+];
+
 window.closePromoModal = function() {
     const promoModal = document.getElementById('promo-modal');
     if (promoModal) {
         promoModal.style.display = "none";
-        document.body.style.overflow = "auto"; // Aktifkan kembali scroll utama web
+        document.body.style.overflow = "auto"; 
     }
 };
 
-// Kunci scroll halaman belakang, tapi biarkan area modal iklan tetap bisa di-scroll internal
+// Logika Otomatis Mengocok Iklan saat Halaman Dimuat Pertama Kali
 document.addEventListener("DOMContentLoaded", () => {
     const promoModal = document.getElementById('promo-modal');
-    if (promoModal && promoModal.style.display !== "none") {
-        document.body.style.overflow = "hidden"; // Menjaga latar belakang tetap diam
+    
+    if (promoModal) {
+        // Rumus matematika acak untuk memilih salah satu data dari daftarIklanSdad
+        const indeksAcak = Math.floor(Math.random() * daftarIklanSdad.length);
+        const iklanTerpilih = daftarIklanSdad[indeksAcak];
+
+        // Menyuntikkan data iklan terpilih secara real-time ke dalam komponen HTML
+        document.getElementById('promo-version-text').textContent = iklanTerpilih.versi;
+        document.getElementById('promo-image-node').src = iklanTerpilih.gambar;
+        document.getElementById('promo-text-container').innerHTML = iklanTerpilih.htmlTeks;
+        document.getElementById('promo-action-link').href = iklanTerpilih.linkWA;
+
+        // Kunci layar belakang selama iklan pop-up tampil
+        document.body.style.overflow = "hidden"; 
     }
 });
             
