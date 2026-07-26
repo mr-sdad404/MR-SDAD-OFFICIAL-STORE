@@ -685,3 +685,66 @@ footer {
         box-shadow: 0 0 16px #00ffcc, 0 0 25px #00ffcc;
     }
 }
+
+/* =========================================================================
+   MODUL LAYOUT TOMBOL TAMBAH & KURANG HALAMAN UTAMA (SINKRONISASI BARU)
+   ========================================================================= */
+.product-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(10, 10, 18, 0.6);
+    padding: 4px 10px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Menyamakan bentuk tombol minus bulat kecil dengan tombol plus */
+.btn-front-calc {
+    background: transparent;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Aturan warna tombol kurang (Minus) */
+.btn-minus {
+    border: 1px solid var(--cyber-pink);
+    color: var(--cyber-pink);
+}
+
+.btn-minus:hover {
+    background: var(--cyber-pink);
+    color: #000;
+    box-shadow: 0 0 10px var(--cyber-pink);
+}
+
+/* Indikator digital jumlah barang terinput */
+.qty-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    color: var(--cyber-blue);
+    font-weight: 700;
+    min-width: 15px;
+    text-align: center;
+    text-shadow: 0 0 5px var(--cyber-blue);
+}
+
+/* Memastikan ukuran tombol plus bawaan konsisten bulat rapi */
+.product-card .btn-buy {
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 18px !important;
+    }
+    
