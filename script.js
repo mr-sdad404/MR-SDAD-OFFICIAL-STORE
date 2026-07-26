@@ -284,7 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const daftarIklanSdad = [
     {
         versi: "MR-SDAD BROADCAST SYSTEM v6.2.5",
-        gambar: "promo.jpg",
+        gambar: "website.png",
         linkWA: "https://wa.me/6285133431132",
         htmlTeks: `
             <strong style="color: #ffff00; display: block; margin-bottom: 8px; text-align: center; font-family: 'Orbitron', sans-serif;">🔥 JASA IKLAN🔥</strong>
@@ -307,8 +307,19 @@ const daftarIklanSdad = [
             • 📦 CPANEL READY: Paket hosting unlimited super cepat harga miring hari ini.<br>
             • 🔥 Stok terbatas! Klik tombol di bawah untuk join group info/klaim promo Anda sekarang sebelum kehabisan!.
         `
+    },
+    {
+        versi: "RUANG PROMOSI (KOSONG) NODE v2.1.5",
+        gambar: "promo.png", // Menggunakan gambar kedua untuk iklan kedua
+        linkWA: "https://wa.me/6285133431132", // Bisa dimasukkan link grup JB WhatsApp Anda
+        htmlTeks: `
+            <strong style="color: #ff00ff; display: block; margin-bottom: 8px; text-align: center; font-family: 'Orbitron', sans-serif;">⚡ RUANG PROMOSI KOSONG ⚡</strong>
+            • 📢 RUANG PROMOSI INI ( KOSONG )<br>
+            • 🌐 BAGI ANDA YANG INGIN MENGGUNAKAN LAYANAN PROMOSI BISA HUBUNGI / KLIK TOMBOL DI BAWAH INI 👇🏻<br>
+            • 📦 CPANEL READY:<br>
+            • 🔥 Stok terbatas! Klik tombol di bawah untuk join group info/klaim promo Anda sekarang sebelum kehabisan!.
+        `
     }
-    // Anda bisa menambah objek { ... } ketiga atau keempat di sini jika punya info produk lain
 ];
 
 window.closePromoModal = function() {
