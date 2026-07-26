@@ -116,55 +116,72 @@ header {
 }
 
 /* =========================================================================
-   SISTEM LOGO JUDUL BERJALAN + GRADASI WARNA LED RGB (TERBARU)
+   PERBAIKAN HEADS-UP DISPLAY: TEXT BERJALAN BESAR & SEJAJAR (NO GLITCH)
    ========================================================================= */
+header {
+    display: flex;
+    flex-direction: row !important; /* Paksa tombol menu dan judul sejajar satu baris di HP */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 4%;
+    gap: 10px;
+}
+
 header .logo {
     order: 2; 
-    width: 65%; /* Memberikan ruang lebar agar teks berjalan leluasa */
-    overflow: hidden; /* Menyembunyikan teks yang keluar dari jalur bingkai */
-    padding: 4px 10px;
+    flex: 1; /* Biarkan kotak judul mengambil sisa ruang kosong secara penuh */
+    overflow: hidden; 
+    padding: 6px 12px;
     border-left: 3px solid var(--cyber-blue);
     border-right: 3px solid var(--cyber-pink);
     border-radius: 4px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
 }
 
-/* Kontainer pembungkus teks berjalan */
+/* Kontainer pergerakan linear tanpa batas */
 .logo-marquee-wrap {
     display: flex;
     width: max-content;
 }
 
-/* Gaya teks utama dengan efek gradasi warna mengalir */
+/* Mengatur ukuran font teks menjadi lebih besar, tebal, dan menyala */
 .logo-text {
     display: inline-block;
-    font-size: 16px; /* Sedikit diperkecil agar pas saat berjalan di layar HP */
+    font-size: 19px; /* UKURAN FONT DIPERBESAR SEPERTI PERMINTAAN ANDA */
     font-weight: 900;
     font-family: 'Orbitron', sans-serif;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     white-space: nowrap;
+    padding-right: 30px; /* Jarak aman sebelum teks berikutnya menyambung */
     
-    /* Efek gradasi warna LED */
     background: linear-gradient(90deg, #ff007f, #00f0ff, #7000ff, #ff007f);
     background-size: 300% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     
-    /* Menjalankan dua animasi sekaligus: berjalan ke samping & ganti warna */
-    animation: gerakLogo 10s linear infinite, warnaLogo 4s linear infinite;
+    /* Penggerak animasi konstan (tanpa mantul balik) */
+    animation: gerakLogoMaju 8s linear infinite, warnaLogo 4s linear infinite;
 }
 
-/* Animasi 1: Menggeser teks ke kiri tanpa putus */
-@keyframes gerakLogo {
+/* Mematikan fungsi pembatasan responsif bawaan yang merusak baris header */
+@media (max-width: 768px) {
+    header { 
+        flex-direction: row !important; /* Mencegah judul melorot ke bawah tombol hamburger di HP */
+    }
+}
+
+/* TRANSLATE LINEAR LURUS (Mengulang tanpa memantul) */
+@keyframes gerakLogoMaju {
     0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-50%, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); } /* Bergeser tepat setengah untuk loop tak berujung */
 }
 
-/* Animasi 2: Mengalirkan kilauan warna gradasi neon */
 @keyframes warnaLogo {
-    0% { background-position: 0% center; filter: drop-shadow(0 0 3px rgba(255, 0, 127, 0.5)); }
-    50% { background-position: 150% center; filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.7)); }
-    100% { background-position: 300% center; filter: drop-shadow(0 0 3px rgba(255, 0, 127, 0.5)); }
+    0% { background-position: 0% center; filter: drop-shadow(0 0 4px rgba(255, 0, 127, 0.6)); }
+    50% { background-position: 150% center; filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.8)); }
+    100% { background-position: 300% center; filter: drop-shadow(0 0 4px rgba(255, 0, 127, 0.6)); }
 }
 
 /* Tombol Tiga Garis (Hamburger) Dipaksa Pindah ke Paling Kiri Layar */
