@@ -115,16 +115,46 @@ header {
     z-index: 100;
 }
 
+/* =========================================================================
+   GAYA LOGO JUDUL CYBERPUNK CHROMA LED (EFEK WARNA BERJALAN)
+   ========================================================================= */
 header .logo {
     font-size: 20px;
     font-weight: 900;
     color: #fff;
-    /* Menaruh logo di sisi kanan (setelah tombol sidebar) */
     order: 2; 
-    border-left: 4px solid var(--cyber-pink);
-    border-right: 4px solid var(--cyber-pink);;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    
+    /* Bingkai Laser Samping Menyala */
+    border-left: 3px solid var(--cyber-blue);
+    border-right: 3px solid var(--cyber-pink);
+    border-radius: 4px;
+    
+    /* Memasang Efek Animasi Gradasi Warna Berjalan */
+    background: linear-gradient(90deg, #ff007f, #00f0ff, #7000ff, #ff007f);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: chromaText 4s linear infinite;
+}
+
+/* Animasi Pergeseran Warna LED RGB */
+@keyframes chromaText {
+    0% {
+        background-position: 0% center;
+        filter: drop-shadow(0 0 4px rgba(255, 0, 127, 0.6));
+    }
+    50% {
+        background-position: 150% center;
+        filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.8));
+    }
+    100% {
+        background-position: 300% center;
+        filter: drop-shadow(0 0 4px rgba(255, 0, 127, 0.6));
+    }
 }
 
 /* Tombol Tiga Garis (Hamburger) Dipaksa Pindah ke Paling Kiri Layar */
