@@ -119,14 +119,18 @@
                         <br><br>
                         <span style="color: #333333;">━━━━━━━━━━━━━━━━━━━</span><br><br>
                         
-                        <strong style="color: #ff3366;">👑 PERATURAN LAYANAN:</strong><br>
+                        <strong style="color: #ff00ff;">👑 PERATURAN LAYANAN:</strong><br>
                         1. Gunakan bot secara bijak dan <span style="color: #ff3333;">hindari aktivitas spam berlebihan</span>.<br>
                         2. Pengguna Bot Permanen & Reseller <span style="color: #ffff00;">wajib memahami resiko</span> layanan VPS/Panel pihak ketiga.<br>
                         3. Jika VPS/Panel mengalami penangguhan, bantuan pemasangan ulang dikenakan biaya <span style="color: #00ffff;">Rp 2.000 / Grup</span>.
                     </p>
                     <div class="product-footer">
                         <span class="price">Mulai Rp 10.000</span>
-                        <button class="btn-buy add-to-cart" data-id="1" data-name="Sewa Mr-sdadbot Premium" data-price="10000">+</button>
+                        <div class="product-controls">
+                            <button class="btn-front-calc btn-minus" onclick="decreaseFrontProduct('1')">-</button>
+                            <span id="qty-display-1" class="qty-number">0</span>
+                            <button class="btn-buy add-to-cart" data-id="1" data-name="Sewa Mr-sdadbot Premium" data-price="10000">+</button>
+                        </div>
                     </div>
                 </div>
 
@@ -151,53 +155,61 @@
                         
                         <span style="color: #00ffcc; font-weight: bold; display: block; text-align: center; letter-spacing: 1px; font-family: 'Orbitron', sans-serif;">
                             🚀 DESAIN MENARIK • RESPONSIF • CEPAT • PROFESIONAL
-        </span>
-    </p>
-    <div class="product-footer">
-        <span class="price">Mulai Rp 100.000</span>
-        <button class="btn-buy add-to-cart cyber-btn-neon" data-id="2" data-name="Jasa Pembuatan Website" data-price="100000">+</button>
-    </div>
-</div>
+                        </span>
+                    </p>
+                    <div class="product-footer">
+                        <span class="price">Mulai Rp 100.000</span>
+                        <div class="product-controls">
+                            <button class="btn-front-calc btn-minus" onclick="decreaseFrontProduct('2')">-</button>
+                            <span id="qty-display-2" class="qty-number">0</span>
+                            <button class="btn-buy add-to-cart cyber-btn-neon" data-id="2" data-name="Jasa Pembuatan Website" data-price="100000">+</button>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Produk 3 -->
                 <div class="glass-card product-card">
-    <div class="product-img-wrapper">
-        <img src="panel.png" alt="Cyber Panel">
-        <span class="badge badge-pink">👨‍💻RESPANEL & CPANEL</span>
-    </div>
-    <h3 class="glitch-title">CPANEL & RESPANEL</h3>
-    <p class="product-desc" style="line-height: 1.6; color: #e0e0e0;">
-        <span style="color: #b3b3b3; font-style: italic; display: block; margin-bottom: 12px;">
-            Kelola hosting dan server dengan lebih mudah, praktis, dan fleksibel bersama MR-SDAD PANEL! Cocok untuk website, bot, project, dan berbagai kebutuhan digital Anda.
-        </span>
-        
-        <span style="color: #333333;">━━━━━━━━━━━━━━━━━━━</span><br><br>
-        
-        <strong style="color: #ff00ff;">💜 LAYANAN RESPANEL:</strong><br>
-        • Masa Aktif 14 Hari ➜ <span style="color: #00ffff;">Rp 10.000</span><br>
-        • Perpanjang 14 Hari ➜ <span style="color: #00ffff;">Rp 5.000</span><br>
-        • Perpanjang 30 Hari ➜ <span style="color: #00ffff;">Rp 10.000</span><br><br>
-        
-        <strong style="color: #00ffcc;">💻 LAYANAN CPANEL:</strong><br>
-        • Kapasitas 1GB – 5GB ➜ <span style="color: #ffff00;">Rp 3.000</span><br>
-        • Kapasitas 6GB – 10GB ➜ <span style="color: #ffff00;">Rp 5.000</span><br>
-        • Kapasitas Unlimited ➜ <span style="color: #ffff00;">Rp 7.000</span><br><br>
-        
-        <small style="color: #ff3333; display: block; background: rgba(255,51,51,0.1); padding: 8px; border-left: 3px solid #ff3333;">
-            ⚠️ Masa aktif Cpanel: 20 Hari<br>
-            🛡️ Garansi bebas replace: 14 Hari
-        </small>
-        <br>
-        
-        <span style="color: #00ffcc; font-weight: bold; display: block; text-align: center; font-family: 'Rajdhani', sans-serif;">
-            ✨ Harga murah, fitur lengkap, dan siap digunakan untuk kebutuhan project Anda!
-        </span>
-    </p>
-    <div class="product-footer">
-        <span class="price">Mulai Rp 3.000</span>
-        <button class="btn-buy add-to-cart cyber-btn-neon" data-id="3" data-name="Cpanel & Respanel" data-price="3000">+</button>
-    </div>
-</div>
+                    <div class="product-img-wrapper">
+                        <img src="panel.png" alt="Cyber Panel">
+                        <span class="badge badge-pink">👨‍💻RESPANEL & CPANEL</span>
+                    </div>
+                    <h3 class="glitch-title">CPANEL & RESPANEL</h3>
+                    <p class="product-desc" style="line-height: 1.6; color: #e0e0e0;">
+                        <span style="color: #b3b3b3; font-style: italic; display: block; margin-bottom: 12px;">
+                            Kelola hosting dan server dengan lebih mudah, praktis, dan fleksibel bersama MR-SDAD PANEL! Cocok untuk website, bot, project, dan berbagai kebutuhan digital Anda.
+                        </span>
+                        
+                        <span style="color: #333333;">━━━━━━━━━━━━━━━━━━━</span><br><br>
+                        
+                        <strong style="color: #ff00ff;">💜 LAYANAN RESPANEL:</strong><br>
+                        • Masa Aktif 14 Hari ➜ <span style="color: #00ffff;">Rp 10.000</span><br>
+                        • Perpanjang 14 Hari ➜ <span style="color: #00ffff;">Rp 5.000</span><br>
+                        • Perpanjang 30 Hari ➜ <span style="color: #00ffff;">Rp 10.000</span><br><br>
+                        
+                        <strong style="color: #00ffcc;">💻 LAYANAN CPANEL:</strong><br>
+                        • Kapasitas 1GB – 5GB ➜ <span style="color: #ffff00;">Rp 3.000</span><br>
+                        • Kapasitas 6GB – 10GB ➜ <span style="color: #ffff00;">Rp 5.000</span><br>
+                        • Kapasitas Unlimited ➜ <span style="color: #ffff00;">Rp 7.000</span><br><br>
+                        
+                        <small style="color: #ff3333; display: block; background: rgba(255,51,51,0.1); padding: 8px; border-left: 3px solid #ff3333;">
+                            ⚠️ Masa aktif Cpanel: 20 Hari<br>
+                            🛡️ Garansi bebas replace: 14 Hari
+                        </small>
+                        <br>
+                        
+                        <span style="color: #00ffcc; font-weight: bold; display: block; text-align: center; font-family: 'Rajdhani', sans-serif;">
+                            ✨ Harga murah, fitur lengkap, dan siap digunakan untuk kebutuhan project Anda!
+                        </span>
+                    </p>
+                    <div class="product-footer">
+                        <span class="price">Mulai Rp 3.000</span>
+                        <div class="product-controls">
+                            <button class="btn-front-calc btn-minus" onclick="decreaseFrontProduct('3')">-</button>
+                            <span id="qty-display-3" class="qty-number">0</span>
+                            <button class="btn-buy add-to-cart cyber-btn-neon" data-id="3" data-name="Cpanel & Respanel" data-price="3000">+</button>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </section>
