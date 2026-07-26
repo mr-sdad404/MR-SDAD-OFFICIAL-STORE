@@ -277,22 +277,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =========================================================================
-// SINKRONISASI PENGENDALI MODAL PROMOSI AWAL MASUK (FITUR BARU)
+// SINKRONISASI PENGENDALI MODAL PROMOSI AWAL MASUK
 // =========================================================================
 window.closePromoModal = function() {
     const promoModal = document.getElementById('promo-modal');
     if (promoModal) {
         promoModal.style.display = "none";
-        // Memastikan scroll layar utama kembali aktif setelah ditutup
-        document.body.style.overflow = "auto"; 
+        document.body.style.overflow = "auto"; // Aktifkan kembali scroll utama web
     }
 };
 
-// Otomatis mengunci scroll utama halaman belakang selama pop-up promosi masih aktif di layar
+// Kunci scroll halaman belakang, tapi biarkan area modal iklan tetap bisa di-scroll internal
 document.addEventListener("DOMContentLoaded", () => {
     const promoModal = document.getElementById('promo-modal');
     if (promoModal && promoModal.style.display !== "none") {
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow = "hidden"; // Menjaga latar belakang tetap diam
     }
 });
             
