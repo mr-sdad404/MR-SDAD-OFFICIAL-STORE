@@ -116,45 +116,55 @@ header {
 }
 
 /* =========================================================================
-   GAYA LOGO JUDUL CYBERPUNK CHROMA LED (EFEK WARNA BERJALAN)
+   SISTEM LOGO JUDUL BERJALAN + GRADASI WARNA LED RGB (TERBARU)
    ========================================================================= */
 header .logo {
-    font-size: 20px;
-    font-weight: 900;
-    color: #fff;
     order: 2; 
-    padding-right: 15px;
-    padding-left: 15px;
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 2px;
-    
-    /* Bingkai Laser Samping Menyala */
+    width: 65%; /* Memberikan ruang lebar agar teks berjalan leluasa */
+    overflow: hidden; /* Menyembunyikan teks yang keluar dari jalur bingkai */
+    padding: 4px 10px;
     border-left: 3px solid var(--cyber-blue);
     border-right: 3px solid var(--cyber-pink);
     border-radius: 4px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Kontainer pembungkus teks berjalan */
+.logo-marquee-wrap {
+    display: flex;
+    width: max-content;
+}
+
+/* Gaya teks utama dengan efek gradasi warna mengalir */
+.logo-text {
+    display: inline-block;
+    font-size: 16px; /* Sedikit diperkecil agar pas saat berjalan di layar HP */
+    font-weight: 900;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    white-space: nowrap;
     
-    /* Memasang Efek Animasi Gradasi Warna Berjalan */
+    /* Efek gradasi warna LED */
     background: linear-gradient(90deg, #ff007f, #00f0ff, #7000ff, #ff007f);
     background-size: 300% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: chromaText 4s linear infinite;
+    
+    /* Menjalankan dua animasi sekaligus: berjalan ke samping & ganti warna */
+    animation: gerakLogo 10s linear infinite, warnaLogo 4s linear infinite;
 }
 
-/* Animasi Pergeseran Warna LED RGB */
-@keyframes chromaText {
-    0% {
-        background-position: 0% center;
-        filter: drop-shadow(0 0 4px rgba(255, 0, 127, 0.6));
-    }
-    50% {
-        background-position: 150% center;
-        filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.8));
-    }
-    100% {
-        background-position: 300% center;
-        filter: drop-shadow(0 0 4px rgba(255, 0, 127, 0.6));
-    }
+/* Animasi 1: Menggeser teks ke kiri tanpa putus */
+@keyframes gerakLogo {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Animasi 2: Mengalirkan kilauan warna gradasi neon */
+@keyframes warnaLogo {
+    0% { background-position: 0% center; filter: drop-shadow(0 0 3px rgba(255, 0, 127, 0.5)); }
+    50% { background-position: 150% center; filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.7)); }
+    100% { background-position: 300% center; filter: drop-shadow(0 0 3px rgba(255, 0, 127, 0.5)); }
 }
 
 /* Tombol Tiga Garis (Hamburger) Dipaksa Pindah ke Paling Kiri Layar */
