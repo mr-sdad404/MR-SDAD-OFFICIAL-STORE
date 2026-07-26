@@ -130,7 +130,10 @@ function updateFrontDisplays() {
     });
 }
 
-// Tombol Integrasi Checkout Otomatis Mengirim List Pesanan ke WA Owner
+// Global tracking total belanjaan untuk modal QRIS
+let currentCalculatedTotal = 0;
+
+// Tombol Integrasi Pembayaran QRIS & Pengiriman Bukti ke WhatsApp
 if (checkoutBtn) {
     checkoutBtn.addEventListener('click', () => {
         if (cart.length === 0) {
@@ -138,25 +141,64 @@ if (checkoutBtn) {
             return;
         }
 
-        let message = `*MR-SDAD STORE - NEW ORDER REQUEST*\n`;
+        // Hitung total tagihan akhir
+        currentCalculatedTotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+        
+        // Munculkan angka nominal ke dalam kotak modal pop-up QRIS
+        const modalTotalDisplay = document.getElementById('modal-grand-total');
+        if (modalTotalDisplay) modalTotalDisplay.textContent = `Rp ${currentCalculatedTotal.toLocaleString('id-ID')}`;
+
+        // Buka Pop-Up Tampilan QRIS di Layar Website
+        const qrisModal = document.getElementById('qris-modal');
+        if (qrisModal) {
+            qrisModal.style.display = "flex";
+            document.body.style.overflow = "hidden"; // Kunci scroll layar belakang
+        }
+    });
+}
+
+// Fungsi Menutup Kotak Pop-Up QRIS
+window.closeQrisModal = function() {
+    const qrisModal = document.getElementById('qris-modal');
+    if (qrisModal) {
+        qrisModal.style.display = "none";
+        document.body.style.overflow = "auto"; // Aktifkan kembali scroll utama
+    }
+};
+
+// Eksekusi Tombol Final WhatsApp di Dalam Modal QRIS
+const finalWaBtn = document.getElementById('final-whatsapp-btn');
+if (finalWaBtn) {
+    finalWaBtn.addEventListener('click', () => {
+        // Bangun struktur text invoice rapi untuk WhatsApp
+        let message = `*MR-SDAD STORE - NEW ORDER REQUEST (PAID VIA QRIS)*\n`;
         message += `==============================\n\n`;
         
-        let grandTotal = 0;
         cart.forEach((item, index) => {
             const itemTotal = item.price * item.quantity;
-            grandTotal += itemTotal;
             message += `${index + 1}. *${item.name}*\n`;
             message += `    Qty: ${item.quantity}x\n`;
             message += `    Subtotal: Rp ${itemTotal.toLocaleString('id-ID')}\n\n`;
         });
 
         message += `==============================\n`;
-        message += `*TOTAL TAGIHAN:* Rp ${grandTotal.toLocaleString('id-ID')}\n\n`;
-        message += `Mohon instruksi selanjutnya untuk sistem pembayaran & pengiriman Node.`;
+        message += `*TOTAL PEMBAYARAN VIA QRIS:* Rp ${currentCalculatedTotal.toLocaleString('id-ID')}\n`;
+        message += `*STATUS TRANSAKSI:* ⏳ Menunggu Validasi Bukti SS\n\n`;
+        message += `Berikut saya lampirkan tangkapan layar (Screenshot) bukti pembayaran QRIS saya yang sah untuk divalidasi oleh Admin Store. Mohon segera diproses, terima kasih!`;
 
+        // Encode text agar aman dibaca URL browser
         const encodedMessage = encodeURIComponent(message);
+        
+        // Format pemanggilan variabel URL WhatsApp yang benar
         const waURL = `https://wa.me/${ownerWhatsApp}?text=${encodedMessage}`;
+
+        // Alihkan pengguna ke tab WhatsApp baru
         window.open(waURL, '_blank');
+        
+        // Otomatis tutup modal dan bersihkan keranjang belanja setelah checkout
+        closeQrisModal();
+        cart = [];
+        renderCart();
     });
 }
 
