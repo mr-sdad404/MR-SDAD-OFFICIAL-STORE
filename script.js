@@ -17,7 +17,6 @@ if (addToCartButtons) {
             const name = button.getAttribute('data-name');
             const price = parseInt(button.getAttribute('data-price'));
 
-            // Cari tahu apakah barang sudah masuk sistem log keranjang
             const existingProduct = cart.find(item => item.id === id);
 
             if (existingProduct) {
@@ -45,16 +44,15 @@ function flashNavCart() {
 
 // Render Ulang Tampilan Interface List Keranjang
 function renderCart() {
-    // Hitung total kuantitas item
     const totalQty = cart.reduce((acc, item) => acc + item.quantity, 0);
     if (cartCount) cartCount.textContent = totalQty;
 
-    // Kosongkan list bawaan
     if (cartItemsContainer) cartItemsContainer.innerHTML = '';
 
     if (cart.length === 0) {
         if (cartItemsContainer) cartItemsContainer.innerHTML = `<li class="empty-msg">Belum ada modul item terpasang di sistem keranjang.</li>`;
         if (cartTotal) cartTotal.textContent = "Rp 0";
+        updateFrontDisplays(); 
         return;
     }
 
@@ -65,28 +63,72 @@ function renderCart() {
         calculatedTotal += subTotal;
 
         const li = document.createElement('li');
+        li.style.display = "flex";
+        li.style.justifyContent = "space-between";
+        li.style.alignItems = "center";
+        li.style.marginBottom = "10px";
+        li.style.width = "100%";
+
         li.innerHTML = `
-            <div>
-                <span class="neon-text-blue">[x${item.quantity}]</span> ${item.name}
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <button class="decrease-item-btn" onclick="decreaseItem('${item.id}')" style="padding: 2px 7px; font-size: 11px; background: #ff0055; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; box-shadow: 0 0 5px #ff0055;">-</button>
+                <span class="neon-text-blue">[x${item.quantity}]</span> 
+                <span style="font-size: 14px; color: #fff;">${item.name}</span>
             </div>
             <div>
-                <span>Rp ${subTotal.toLocaleString('id-ID')}</span>
-                <button class="remove-item-btn" onclick="removeItem('${item.id}')">
-                    <i class="fa-solid fa-trash-can"></i>
-                </button>
+                <span style="font-size: 14px; color: #fff;">Rp ${subTotal.toLocaleString('id-ID')}</span>
             </div>
         `;
         if (cartItemsContainer) cartItemsContainer.appendChild(li);
     });
 
     if (cartTotal) cartTotal.textContent = `Rp ${calculatedTotal.toLocaleString('id-ID')}`;
+    updateFrontDisplays(); 
 }
 
-// Fungsi Hapus Barang
+// Fungsi Hapus Barang Total dari Keranjang
 window.removeItem = function(id) {
     cart = cart.filter(item => item.id !== id);
     renderCart();
 };
+
+// Fungsi Mengurangi Jumlah Barang dari Keranjang Dalam Panel Sidebar Navigasi
+window.decreaseItem = function(id) {
+    const product = cart.find(item => item.id === id);
+    if (product) {
+        if (product.quantity > 1) {
+            product.quantity -= 1;
+        } else {
+            cart = cart.filter(item => item.id !== id);
+        }
+    }
+    renderCart();
+};
+
+// Fungsi Mengurangi Produk Langsung dari Tombol Minus Halaman Utama
+window.decreaseFrontProduct = function(id) {
+    const product = cart.find(item => item.id === id);
+    if (product) {
+        if (product.quantity > 1) {
+            product.quantity -= 1;
+        } else {
+            cart = cart.filter(item => item.id !== id);
+        }
+    }
+    renderCart();
+};
+
+// Sinkronisasi Pembaruan Angka Display Indikator Kuantitas Kolam Produk Utama Halaman Depan
+function updateFrontDisplays() {
+    for (let i = 1; i <= 3; i++) {
+        const display = document.getElementById(`qty-display-${i}`);
+        if (display) display.textContent = "0";
+    }
+    cart.forEach(item => {
+        const display = document.getElementById(`qty-display-${item.id}`);
+        if (display) display.textContent = item.quantity;
+    });
+}
 
 // Tombol Integrasi Checkout Otomatis Mengirim List Pesanan ke WA Owner
 if (checkoutBtn) {
@@ -96,7 +138,6 @@ if (checkoutBtn) {
             return;
         }
 
-        // Bangun struktur text invoice rapi untuk WhatsApp
         let message = `*MR-SDAD STORE - NEW ORDER REQUEST*\n`;
         message += `==============================\n\n`;
         
@@ -113,13 +154,8 @@ if (checkoutBtn) {
         message += `*TOTAL TAGIHAN:* Rp ${grandTotal.toLocaleString('id-ID')}\n\n`;
         message += `Mohon instruksi selanjutnya untuk sistem pembayaran & pengiriman Node.`;
 
-        // Encode text agar aman dibaca URL browser
         const encodedMessage = encodeURIComponent(message);
-        
-        // PERBAIKAN: Format pemanggilan variabel URL WhatsApp yang benar ($ ditambahkan)
         const waURL = `https://wa.me/${ownerWhatsApp}?text=${encodedMessage}`;
-
-        // Alihkan pengguna ke tab WhatsApp baru
         window.open(waURL, '_blank');
     });
 }
@@ -128,7 +164,6 @@ if (checkoutBtn) {
 function controlMusic() {
   var music = document.getElementById("bgMusic");
   var btn = document.getElementById("musicBtn");
-  
   if (!music || !btn) return;
 
   if (music.paused) {
@@ -150,13 +185,9 @@ function controlMusic() {
     btn.style.color = "#00f0ff";
   }
 }
-
-// Hubungkan ke fungsi global window agar tag onclick HTML Anda bisa membacanya
 window.controlMusic = controlMusic;
 
-// =========================================================================
-// LOGIKA UTAMA SINKRONISASI UNTUK MENGAKTIFKAN KLIK SIDEBAR (DITAMBAHKAN)
-// =========================================================================
+// Logika Utama Sinkronisasi Menu Sidebar
 document.addEventListener("DOMContentLoaded", () => {
     const openSidebarBtn = document.getElementById('open-sidebar-btn');
     const closeSidebarBtn = document.getElementById('close-sidebar-btn');
@@ -164,7 +195,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebarOverlay = document.getElementById('sidebar-overlay');
     const sidebarLinks = document.querySelectorAll('.sidebar-link');
 
-    // Klik tombol hamburger untuk membuka sidebar
     if (openSidebarBtn && cyberSidebar && sidebarOverlay) {
         openSidebarBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -173,7 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Klik tombol silang (X) untuk menutup sidebar
     if (closeSidebarBtn && cyberSidebar && sidebarOverlay) {
         closeSidebarBtn.addEventListener('click', () => {
             cyberSidebar.classList.remove('active');
@@ -181,7 +210,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Klik area blur gelap di luar panel untuk menutup sidebar
     if (sidebarOverlay && cyberSidebar) {
         sidebarOverlay.addEventListener('click', () => {
             cyberSidebar.classList.remove('active');
@@ -189,7 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Menutup sidebar otomatis saat salah satu menu navigasi di klik
     if (sidebarLinks && cyberSidebar && sidebarOverlay) {
         sidebarLinks.forEach(link => {
             link.addEventListener('click', () => {
