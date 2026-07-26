@@ -170,9 +170,13 @@ window.closeQrisModal = function() {
 const finalWaBtn = document.getElementById('final-whatsapp-btn');
 if (finalWaBtn) {
     finalWaBtn.addEventListener('click', () => {
+        // Mengambil teks catatan yang diketik oleh pelanggan di halaman web
+        const customerNote = document.getElementById('customer-note').value.trim();
+        const noteText = customerNote ? `${customerNote}` : `Tidak ada catatan tambahan`;
+
         // Bangun struktur text invoice rapi untuk WhatsApp
         let message = `*MR-SDAD STORE - NEW ORDER REQUEST (PAID VIA QRIS)*\n`;
-        message += `==============================\n\n`;
+        message += `=============================\n\n`;
         
         cart.forEach((item, index) => {
             const itemTotal = item.price * item.quantity;
@@ -181,22 +185,25 @@ if (finalWaBtn) {
             message += `    Subtotal: Rp ${itemTotal.toLocaleString('id-ID')}\n\n`;
         });
 
-        message += `==============================\n`;
+        message += `=============================\n`;
         message += `*TOTAL PEMBAYARAN VIA QRIS:* Rp ${currentCalculatedTotal.toLocaleString('id-ID')}\n`;
-        message += `*STATUS TRANSAKSI:* ⏳ Menunggu Validasi Bukti SS\n\n`;
-        message += `Berikut saya lampirkan tangkapan layar (Screenshot) bukti pembayaran QRIS saya yang sah untuk divalidasi oleh Admin Store. Mohon segera diproses, terima kasih!`;
+        message += `*STATUS TRANSAKSI:* ⏳ Menunggu Validasi Bukti SS\n`;
+        message += `*CATATAN PESANAN:* _${noteText}_\n\n`; // MENAMPILKAN CATATAN PELANGGAN DI SINI
+        message += `=============================\n\n`;
+        message += `Berikut saya lampirkan tangkapan layar (Screenshot) bukti pembayaran QRIS saya yang sah untuk divalidasi oleh sistem Node Owner. Mohon segera diproses, terima kasih!`;
 
         // Encode text agar aman dibaca URL browser
         const encodedMessage = encodeURIComponent(message);
         
-        // Format pemanggilan variabel URL WhatsApp yang benar
+        // Format pemanggilan URL WhatsApp
         const waURL = `https://wa.me/${ownerWhatsApp}?text=${encodedMessage}`;
 
         // Alihkan pengguna ke tab WhatsApp baru
         window.open(waURL, '_blank');
         
-        // Otomatis tutup modal dan bersihkan keranjang belanja setelah checkout
+        // Otomatis tutup modal dan bersihkan form keranjang serta catatan setelah checkout
         closeQrisModal();
+        document.getElementById('customer-note').value = ''; // Mengosongkan form catatan kembali
         cart = [];
         renderCart();
     });
