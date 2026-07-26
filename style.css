@@ -121,8 +121,8 @@ header .logo {
     color: #fff;
     /* Menaruh logo di sisi kanan (setelah tombol sidebar) */
     order: 2; 
-    border-right: 4px solid var(--cyber-pink);
-    border-left: none;
+    border-left: 4px solid var(--cyber-pink);
+    border-right: 4px solid var(--cyber-pink);;
     padding-right: 10px;
     padding-left: 0;
 }
