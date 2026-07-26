@@ -116,11 +116,11 @@ header {
 }
 
 /* =========================================================================
-   PERBAIKAN HEADS-UP DISPLAY: TEXT BERJALAN BESAR & SEJAJAR (NO GLITCH)
+   PERBAIKAN TOTAL: TEKS JUDUL BERJALAN SEARAH (TRUE SEAMLESS LOOP)
    ========================================================================= */
 header {
     display: flex;
-    flex-direction: row !important; /* Paksa tombol menu dan judul sejajar satu baris di HP */
+    flex-direction: row !important; /* Kunci tombol menu dan judul sejajar sebaris */
     justify-content: space-between;
     align-items: center;
     padding: 10px 4%;
@@ -129,8 +129,8 @@ header {
 
 header .logo {
     order: 2; 
-    flex: 1; /* Biarkan kotak judul mengambil sisa ruang kosong secara penuh */
-    overflow: hidden; 
+    flex: 1; /* Ambil sisa ruang kosong header */
+    overflow: hidden; /* Potong teks yang meluber keluar bingkai */
     padding: 6px 12px;
     border-left: 3px solid var(--cyber-blue);
     border-right: 3px solid var(--cyber-pink);
@@ -140,41 +140,52 @@ header .logo {
     align-items: center;
 }
 
-/* Kontainer pergerakan linear tanpa batas */
+/* FIX UTAMA: Memaksa jalur teks memanjang penuh ke samping tanpa batas */
 .logo-marquee-wrap {
     display: flex;
-    width: max-content;
+    width: max-content; /* Kunci agar teks kedua berjejer lurus di kanan teks pertama */
 }
 
-/* =========================================================================
-   PERBAIKAN LOGO TEXT: PAKSA BERJALAN MAJU TERUS TANPA MANTUL BALIK
-   ========================================================================= */
+/* Gaya teks logo menyala besar */
 .logo-text {
     display: inline-block;
     font-size: 19px; 
     font-weight: 900;
     font-family: 'Orbitron', sans-serif;
     letter-spacing: 1.5px;
-    white-space: nowrap;
-    padding-right: 40px; /* Jarak spasi jeda antar teks agar tidak menempel */
+    white-space: nowrap; /* Mencegah teks patah turun ke bawah */
+    padding-right: 50px; /* Jarak jeda spasi aman sebelum teks kedua menyambung */
     
     background: linear-gradient(90deg, #ff007f, #00f0ff, #7000ff, #ff007f);
     background-size: 300% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     
-    /* FIX: "linear infinite" tanpa kata "alternate" memaksa teks berputar searah maju terus */
-    animation: gerakLogoMaju 8s linear infinite, warnaLogo 4s linear infinite;
+    /* Menjalankan perputaran konstan (tanpa selingan alternate) */
+    animation: gulungLogoMaju 10s linear infinite, warnaLogo 4s linear infinite;
 }
 
-/* KUNCI ARAH GERAK MAJU (MENGULANG MULUS SEMPURNA) */
-@keyframes gerakLogoMaju {
+/* Mematikan fungsi pembatasan responsif mobile yang merusak baris header */
+@media (max-width: 768px) {
+    header { 
+        flex-direction: row !important; 
+    }
+}
+
+/* LOGIKA ROTASI LOOPING LURUS (ANTI MANTUL) */
+@keyframes gulungLogoMaju {
     0% { 
         transform: translate3d(0, 0, 0); 
     }
     100% { 
-        transform: translate3d(-50%, 0, 0); /* Menggeser tepat setengah panjang kontainer */
+        transform: translate3d(-50%, 0, 0); /* Bergeser tepat setengah panjang total teks */
     }
+}
+
+@keyframes warnaLogo {
+    0% { background-position: 0% center; filter: drop-shadow(0 0 4px rgba(255, 0, 127, 0.6)); }
+    50% { background-position: 150% center; filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.8)); }
+    100% { background-position: 300% center; filter: drop-shadow(0 0 4px rgba(255, 0, 127, 0.6)); }
 }
 
 /* Mematikan fungsi pembatasan responsif bawaan yang merusak baris header */
