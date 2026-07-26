@@ -225,9 +225,36 @@
                     <span>TOTAL PEMBAYARAN:</span>
                     <span id="cart-total" class="neon-text-blue">Rp 0</span>
                 </div>
-                <button id="checkout-btn" class="btn-cyber-primary">KIRIM INVOICE KE WHATSAPP</button>
+                <button id="checkout-btn" class="btn-cyber-primary">KIRIM INVOICE & BAYAR VIA QRIS</button>
             </div>
         </section>
+
+        <!-- MODAL POP-UP SCAN QRIS PEMBAYARAN (SINKRONISASI BARU) -->
+        <div id="qris-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 5, 10, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 999999; justify-content: center; align-items: center; padding: 20px;">
+            <div class="glass-card" style="width: 100%; max-width: 420px; padding: 25px; border-top: 4px solid var(--cyber-blue); text-align: center; box-shadow: 0 0 30px rgba(0, 240, 255, 0.2); position: relative;">
+                <!-- Tombol Tutup Pop-Up Mini -->
+                <button onclick="closeQrisModal()" style="position: absolute; top: 12px; right: 15px; background: transparent; border: none; color: var(--cyber-pink); font-size: 24px; cursor: pointer;">&times;</button>
+                
+                <h3 style="color: #fff; font-size: 16px; margin-bottom: 5px; font-family: 'Orbitron', sans-serif;">🔒 CHECKOUT</h3>
+                <p style="font-size: 13px; color: #8a8ab0; margin-bottom: 15px;">Silakan scan kode QRIS resmi di bawah ini menggunakan e-wallet atau m-banking Anda.</p>
+                
+                <!-- Rangkuman Total Pembayaran Dinamis -->
+                <div style="background: rgba(0,0,0,0.4); padding: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 15px;">
+                    <span style="font-size: 12px; color: #a0a0c8; display: block; margin-bottom: 2px;">TOTAL WAJIB DIBAYAR:</span>
+                    <span id="modal-grand-total" style="font-family: 'Orbitron', sans-serif; font-size: 20px; color: #ffff00; text-shadow: 0 0 10px rgba(255,255,0,0.4); font-weight: bold;">Rp 0</span>
+                </div>
+
+                <!-- Gambar QRIS Anda dari repositori -->
+                <img src="qris.png" id="qris-image-node" style="width: 100%; max-width: 250px; height: auto; border: 4px solid #fff; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); margin-bottom: 15px;" alt="QRIS Payment">
+                
+                <small style="color: #ff3366; display: block; font-size: 11px; background: rgba(255,51,102,0.1); padding: 8px; border-left: 3px solid #ff3366; text-align: left; margin-bottom: 20px; line-height: 1.4;">
+                    ⚠️ WAJIB: Setelah berhasil transfer, klik tombol di bawah untuk mengirim rincian orderan & sertakan attachment lampiran SS bukti transfer Anda ke WhatsApp Owner.
+                </small>
+
+                <button id="final-whatsapp-btn" class="btn-cyber-primary" style="width: 100%; background: linear-gradient(135deg, #00ffcc 0%, #00f0ff 100%); color: #000; font-weight: 900; box-shadow: 0 0 15px #00f0ff;">KONFIRMASI + KIRIM BUKTI SS (WA)</button>
+            </div>
+        </div>
+   </section>
 
     </main>
 
