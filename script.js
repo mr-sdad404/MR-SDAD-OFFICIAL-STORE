@@ -152,7 +152,7 @@ if (checkoutBtn) {
         const qrisModal = document.getElementById('qris-modal');
         if (qrisModal) {
             qrisModal.style.display = "flex";
-            document.body.style.overflow = "hidden"; // Kunci scroll layar belakang
+            document.body.style.overflow = "auto"; // di ubah jadi (auto), agar bisa scroll.
         }
     });
 }
