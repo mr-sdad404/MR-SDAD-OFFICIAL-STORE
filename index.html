@@ -225,12 +225,18 @@
             <ul id="cart-items" class="cart-list">
                 <li class="empty-msg">Belum ada modul item terpasang di sistem keranjang.</li>
             </ul>
-            <div class="cart-summary">
-                <div class="total-box">
+                        <div class="cart-summary">
+                <!-- FORM INPUT CATATAN PELANGGAN (FITUR BARU) -->
+                <div style="width: 100%; text-align: left; margin-bottom: 5px;">
+                    <label style="display: block; font-size: 14px; color: var(--cyber-blue); margin-bottom: 6px; font-family: 'Orbitron', sans-serif; letter-spacing: 1px;">📝 CATATAN PELANGGAN :</label>
+                    <textarea id="customer-note" placeholder="Contoh: Nama Layanan / Layanan Yang Di Order / Request Desain khusus..." style="width: 100%; height: 80px; padding: 10px; background: rgba(0, 0, 0, 0.5); border: 1px solid var(--glass-border); border-radius: 6px; color: #fff; font-size: 14px; font-family: 'Rajdhani', sans-serif; outline: none; resize: none; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); transition: border-color 0.3s;"></textarea>
+                </div>
+
+                <div class="total-box" style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                     <span>TOTAL PEMBAYARAN:</span>
                     <span id="cart-total" class="neon-text-blue">Rp 0</span>
                 </div>
-                <button id="checkout-btn" class="btn-cyber-primary">KIRIM INVOICE & BAYAR VIA QRIS</button>
+                <button id="checkout-btn" class="btn-cyber-primary" style="width: 100%; margin-top: 5px;">KIRIM INVOICE & BAYAR VIA QRIS</button>
             </div>
         </section>
 
