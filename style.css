@@ -14,39 +14,42 @@
     --bg-overlay: linear-gradient(135deg, rgba(10, 10, 18, 0.85) 0%, rgba(20, 20, 43, 0.9) 100%);
 }
 
-/* KELAS KHUSUS KETIKA PELANGGAN MENGAKTIFKAN MODE TERANG */
+/* =========================================================================
+   PERBAIKAN UPGRADE MODE TERANG: KONTRAS TINGGI, JELAS, & MATANG
+   ========================================================================= */
 .light-theme {
-    --cyber-black: #f0f2f5;
+    --cyber-black: #f5f6fa;
     --cyber-pink: #d10068;
-    --cyber-blue: #0099a8;
+    --cyber-blue: #007a87;
     --cyber-purple: #5200ba;
-    --glass-bg: rgba(255, 255, 255, 0.75);
-    --glass-border: rgba(0, 0, 0, 0.12);
     
-    --text-color-base: #1c1e21;
-    --bg-overlay: linear-gradient(135deg, rgba(240, 242, 245, 0.85) 0%, rgba(220, 224, 230, 0.9) 100%);
+    /* Membuat latar belakang kaca kristal lebih tebal putihnya */
+    --glass-bg: rgba(255, 255, 255, 0.94);
+    --glass-border: rgba(0, 0, 0, 0.15);
+    
+    /* KUNCI UTAMA: Mengubah teks dasar menjadi hitam pekat agar sangat tajam */
+    --text-color-base: #111116;
+    --bg-overlay: linear-gradient(135deg, rgba(245, 246, 250, 0.9) 0%, rgba(220, 225, 235, 0.95) 100%);
 }
 
-/* Sesuaikan setelan font dasar body Anda agar mendeteksi variabel teks di atas */
-body {
-    background-color: var(--cyber-black);
-    color: var(--text-color-base); /* Mengganti warna statis #e0e0ff menjadi variabel dinamis */
-    overflow-x: hidden;
-    font-size: 18px;
-    transition: background-color 0.3s, color 0.3s; /* Efek transisi warna halus saat diganti */
+/* KODE TAMBAHAN: Memaksa teks deskripsi kecil di dalam modal & kartu produk 
+   ikut berubah menjadi hitam pekat saat mode terang aktif */
+.light-theme .product-desc,
+.light-theme #qris-modal p,
+.light-theme #qris-modal small,
+.light-theme #product-detail-modal p,
+.light-theme #product-detail-modal div {
+    color: #111116 !important; /* Paksa teks abu-abu pudar berubah jadi hitam tajam */
 }
 
-/* Pastikan lapisan kegelapan latar belakang membaca variabel bg-overlay baru */
-.cyber-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-overlay);
-    z-index: -1;
-    transition: background 0.3s;
+/* Memastikan teks box total wajib dibayar di pop-up QRIS tetap terbaca rapi */
+.light-theme #qris-modal span {
+    color: #22222b;
+}
+
+/* Menjaga agar tombol konfirmasi WhatsApp tetap menyala terang di mode terang */
+.light-theme .btn-cyber-primary {
+    color: #ffffff !important;
 }
 
 /* Base Reset */
