@@ -345,6 +345,22 @@ function mulaiMusik() {
         <button class="chat-send-btn" onclick="sendChatMessage()">➔</button>
     </div>
 </div>
+
+    <!-- Tombol Rahasia Owner (Sengaja dibuat transparan agar tersamar) -->
+<div id="ownerSecretBtn" onclick="openOwnerPanel()" style="position: fixed; top: 15px; right: 15px; font-size: 14px; opacity: 0.15; cursor: pointer; z-index: 10000; color: #fff; user-select: none;">
+    🔒
+</div>
+
+<!-- Panel Input Koneksi Owner -->
+<div id="ownerConnectPanel" class="glass-card" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; z-index: 10001; background: #111424; border: 1px solid var(--cyber-blue); box-shadow: 0 0 25px rgba(0,240,255,0.3); border-radius: 12px; flex-direction: column; gap: 12px;">
+    <h3 style="font-family: 'Rajdhani', sans-serif; color: #fff; margin: 0 0 5px 0; font-size: 16px;">🔑 PANEL OWNER LIVE CHAT</h3>
+    <p style="font-size: 12px; color: #8a8ab0; margin: 0;">Tempel kode sesi dari pelanggan di bawah ini untuk tersambung:</p>
+    <textarea id="ownerSessionInput" placeholder="Tempel kode sesi pelanggan di sini..." style="width: 100%; height: 80px; background: #15192e; border: 1px solid var(--glass-border); border-radius: 6px; color: #fff; padding: 8px; font-size: 11px; resize: none; outline: none;"></textarea>
+    <div style="display: flex; gap: 10px; justify-content: flex-end;">
+        <button onclick="closeOwnerPanel()" style="background: transparent; border: 1px solid var(--cyber-pink); color: var(--cyber-pink); padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;">Batal</button>
+        <button onclick="connectToCustomer()" style="background: var(--cyber-blue); border: none; color: #000; padding: 5px 12px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 12px;">Sambungkan</button>
+    </div>
+</div>
     
 </body>
 </html>
