@@ -78,145 +78,81 @@
             </div>
         </section>
         
-        <!-- KOLOM PRODUK -->
+                <!-- KOLOM PRODUK GAYA MARKETPLACE (TWO-COLUMN GRID) -->
         <section id="product-section">
-            <h2 class="section-title">🛍️PRODUCT MR-SDAD</h2>
-            <div class="product-grid">
+            <h2 class="section-title">🛍️PRODUCT MR-SDAD STORE</h2>
+            <div class="product-grid" style="display: grid; grid-template-columns: repeat(2, 1fr) !important; gap: 12px; margin-bottom: 50px;">
                 
                 <!-- Produk 1 -->
-                <div class="glass-card product-card">
-                    <div class="product-img-wrapper">
-                        <img src="sewabot.jpg" alt="Sewa Bot">
-                        <span class="badge badge-pink">💯SEWA BOT MD</span>
+                <div class="glass-card product-card-simple" onclick="openProductDetail('1')" style="padding: 10px; cursor: pointer; display: flex; flex-direction: column; height: 100%;">
+                    <div class="product-img-wrapper" style="height: 140px; margin-bottom: 8px; position: relative;">
+                        <img src="sewabot.jpg" alt="Sewa Bot" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
+                        <span class="badge badge-pink" style="font-size: 10px; padding: 2px 6px;">💯BOT WA MULTI FUNGSI</span>
                     </div>
-                    <h3>JASA SEWA MR-SDADBOT MD</h3>
-                    <p class="product-desc" style="line-height: 1.6; color: #e0e0e0;">
-                        <strong style="color: #00ffcc;">🤖 FITUR UTAMA:</strong><br>
-                        • <span style="color: #ff00ff;">700+ Fitur Premium</span><br>
-                        • <span style="color: #00ffff;">Sistem Perlindungan Grup</span><br>
-                        • <span style="color: #00ffcc;">Aktif 24 Jam</span><br>
-                        • <span style="color: #ffff00;">Pembaruan Berkala</span><br>
-                        • <span style="color: #ff3366;">Dukungan Cepat</span><br><br>
-                        
-                        <span style="color: #b3b3b3; font-style: italic;">💬 Satu bot untuk ratusan kebutuhan. 🔥 Satu akses untuk mengubah cara Anda mengelola grup WhatsApp.</span>
-                        <br><br>
-                        <span style="color: #333333;">━━━━━━━━━━━━━━━━━━━</span><br><br>
-                        
-                        <strong style="color: #ffff00;">💰 AKSES PREMIUM:</strong><br>
-                        🗓️ 7 HARI <span style="color: #00ffff;">➜ Rp 10.000</span><br>
-                        🗓️ 15 HARI <span style="color: #00ffff;">➜ Rp 15.000</span><br>
-                        🗓️ 30 HARI <span style="color: #00ffff;">➜ Rp 20.000</span> <strong style="color: #ff00ff;">(🔥 PALING BANYAK DIPILIH)</strong><br>
-                        💎 60 HARI <span style="color: #00ffff;">➜ Rp 35.000</span><br>
-                        💎 90 HARI <span style="color: #00ffff;">➜ Rp 50.000</span><br>
-                        👑 PERMANEN <span style="color: #ff00ff; font-weight: bold; text-shadow: 0 0 5px #ff00ff;">➜ Rp 60.000</span><br><br>
-                        
-                        <small style="color: #ff3333; display: block; background: rgba(255,51,51,0.1); padding: 8px; border-left: 3px solid #ff3333;">
-                            ⚠️ HARGA DAPAT BERUBAH KAPAN SAJA.<br>
-                            ⚠️ Jangan menunggu harga naik baru membeli. Akses permanen dengan harga saat ini tidak selalu tersedia.
-                        </small>
-                        <br>
-                        <span style="color: #333333;">━━━━━━━━━━━━━━━━━━━</span><br><br>
-                        
-                        <strong style="color: #ff00ff;">👑 PROGRAM RESELLER MR-SDAD BOT:</strong><br>
-                        💼 Akses Reseller Permanen ➜ <strong style="color: #ffff00; text-shadow: 0 0 5px #ffff00;">Rp 100.000</strong> (Satu Akses)<br>
-                        📈 Peluang keuntungan berulang.<br>
-                        <span style="color: #ff3333;">⚠️ Akses reseller tersedia terbatas.</span>
-                        <br><br>
-                        <span style="color: #333333;">━━━━━━━━━━━━━━━━━━━</span><br><br>
-                        
-                        <strong style="color: #ff00ff;">👑 PERATURAN LAYANAN:</strong><br>
-                        1. Gunakan bot secara bijak dan <span style="color: #ff3333;">hindari aktivitas spam berlebihan</span>.<br>
-                        2. Pengguna Bot Permanen & Reseller <span style="color: #ffff00;">wajib memahami resiko</span> layanan VPS/Panel pihak ketiga.<br>
-                        3. Jika VPS/Panel mengalami penangguhan, bantuan pemasangan ulang dikenakan biaya <span style="color: #00ffff;">Rp 2.000 / Grup</span>.
-                    </p>
-                    <div class="product-footer">
-                        <span class="price">Mulai Rp 5.000</span>
-                        <div class="product-controls">
-                            <button class="btn-front-calc btn-minus" onclick="decreaseFrontProduct('1')">-</button>
-                            <span id="qty-display-1" class="qty-number">0</span>
-                            <button class="btn-buy add-to-cart" data-id="1" data-name="Sewa Mr-sdadbot Premium" data-price="5000">+</button>
-                        </div>
+                    <h3 style="font-size: 14px; color: #fff; margin-bottom: 6px; line-height: 1.3; font-family: 'Rajdhani', sans-serif; font-weight: 700; height: 36px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">JASA SEWA MR-SDADBOT MD</h3>
+                    <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="price" style="font-size: 14px; font-family: 'Orbitron', sans-serif; color: var(--cyber-blue);">Rp 5.000</span>
+                        <!-- Indikator kecil jika item sudah masuk keranjang -->
+                        <span id="front-qty-1" style="font-size: 11px; color: var(--cyber-pink); font-weight: bold; display: none;">[x0]</span>
                     </div>
                 </div>
 
                 <!-- Produk 2 -->
-                <div class="glass-card product-card">
-                    <div class="product-img-wrapper">
-                        <img src="website.png" alt="Cyber Jasa Website">
-                        <span class="badge badge-blue">🌐JASA PEMBUATAN WEBSITE</span>
+                <div class="glass-card product-card-simple" onclick="openProductDetail('2')" style="padding: 10px; cursor: pointer; display: flex; flex-direction: column; height: 100%;">
+                    <div class="product-img-wrapper" style="height: 140px; margin-bottom: 8px; position: relative;">
+                        <img src="website.png" alt="Jasa Website" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
+                        <span class="badge badge-blue" style="font-size: 10px; padding: 2px 6px;">🌐WEB</span>
                     </div>
-                    <h3 class="glitch-title">JASA PEMBUATAN WEBSITE</h3>
-                    <p class="product-desc" style="line-height: 1.6; color: #e0e0e0;">
-                        <span style="color: #b3b3b3; font-style: italic; display: block; margin-bottom: 12px;">
-                            Buat website profesional, modern, responsif, dan sesuai kebutuhan Anda bersama MR-SDAD!
-                        </span>
-                        <strong style="color: #00ffcc;">✨ FITUR UTAMA LAYANAN:</strong><br>
-                        • <span style="color: #ff00ff;">Bisa Request Desain</span> sesuka kamu!<br>
-                        • <span style="color: #ffff00;">Mulai Rp100 Ribuan</span> saja!<br>
-                        • Sudah mendapatkan <span style="color: #00ffff;">Website Siap Landing</span>.<br><br>
-                        
-                        <strong style="color: #ff3366;">🎯 COCOK UNTUK KATEGORI:</strong><br>
-                        Toko Online, Company Profile, Landing Page, Portofolio, Dashboard, hingga Website Custom.<br><br>
-                        
-                        <span style="color: #00ffcc; font-weight: bold; display: block; text-align: center; letter-spacing: 1px; font-family: 'Orbitron', sans-serif;">
-                            🚀 DESAIN MENARIK • RESPONSIF • CEPAT • PROFESIONAL
-                        </span>
-                    </p>
-                    <div class="product-footer">
-                        <span class="price">Mulai Rp 50.000</span>
-                        <div class="product-controls">
-                            <button class="btn-front-calc btn-minus" onclick="decreaseFrontProduct('2')">-</button>
-                            <span id="qty-display-2" class="qty-number">0</span>
-                            <button class="btn-buy add-to-cart cyber-btn-neon" data-id="2" data-name="Jasa Pembuatan Website" data-price="50000">+</button>
-                        </div>
+                    <h3 style="font-size: 14px; color: #fff; margin-bottom: 6px; line-height: 1.3; font-family: 'Rajdhani', sans-serif; font-weight: 700; height: 36px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">JASA PEMBUATAN WEBSITE</h3>
+                    <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="price" style="font-size: 14px; font-family: 'Orbitron', sans-serif; color: var(--cyber-blue);">Rp 50.000</span>
+                        <span id="front-qty-2" style="font-size: 11px; color: var(--cyber-pink); font-weight: bold; display: none;">[x0]</span>
                     </div>
                 </div>
 
                 <!-- Produk 3 -->
-                <div class="glass-card product-card">
-                    <div class="product-img-wrapper">
-                        <img src="panel.png" alt="Cyber Panel">
-                        <span class="badge badge-pink">👨‍💻RESPANEL & CPANEL</span>
+                <div class="glass-card product-card-simple" onclick="openProductDetail('3')" style="padding: 10px; cursor: pointer; display: flex; flex-direction: column; height: 100%;">
+                    <div class="product-img-wrapper" style="height: 140px; margin-bottom: 8px; position: relative;">
+                        <img src="panel.png" alt="Cyber Panel" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
+                        <span class="badge badge-pink" style="font-size: 10px; padding: 2px 6px;">👨‍💻PANEL</span>
                     </div>
-                    <h3 class="glitch-title">CPANEL & RESPANEL</h3>
-                    <p class="product-desc" style="line-height: 1.6; color: #e0e0e0;">
-                        <span style="color: #b3b3b3; font-style: italic; display: block; margin-bottom: 12px;">
-                            Kelola hosting dan server dengan lebih mudah, praktis, dan fleksibel bersama MR-SDAD PANEL! Cocok untuk website, bot, project, dan berbagai kebutuhan digital Anda.
-                        </span>
-                        
-                        <span style="color: #333333;">━━━━━━━━━━━━━━━━━━━</span><br><br>
-                        
-                        <strong style="color: #ff00ff;">💜 LAYANAN RESPANEL:</strong><br>
-                        • Masa Aktif 14 Hari ➜ <span style="color: #00ffff;">Rp 10.000</span><br>
-                        • Perpanjang 14 Hari ➜ <span style="color: #00ffff;">Rp 5.000</span><br>
-                        • Perpanjang 30 Hari ➜ <span style="color: #00ffff;">Rp 10.000</span><br><br>
-                        
-                        <strong style="color: #00ffcc;">💻 LAYANAN CPANEL:</strong><br>
-                        • Kapasitas 1GB – 5GB ➜ <span style="color: #ffff00;">Rp 2.000 s/d Rp 4.000</span><br>
-                        • Kapasitas 6GB – 10GB ➜ <span style="color: #ffff00;">Rp 4.000 s/d Rp 6.000</span><br>
-                        • Kapasitas Unlimited ➜ <span style="color: #ffff00;">Rp 8.000</span><br><br>
-                        
-                        <small style="color: #ff3333; display: block; background: rgba(255,51,51,0.1); padding: 8px; border-left: 3px solid #ff3333;">
-                            ⚠️ Masa aktif Cpanel: 20 Hari<br>
-                            🛡️ Garansi bebas replace: 14 Hari
-                        </small>
-                        <br>
-                        
-                        <span style="color: #00ffcc; font-weight: bold; display: block; text-align: center; font-family: 'Rajdhani', sans-serif;">
-                            ✨ Harga murah, fitur lengkap, dan siap digunakan untuk kebutuhan project Anda!
-                        </span>
-                    </p>
-                    <div class="product-footer">
-                        <span class="price">Mulai Rp 2.000</span>
-                        <div class="product-controls">
-                            <button class="btn-front-calc btn-minus" onclick="decreaseFrontProduct('3')">-</button>
-                            <span id="qty-display-3" class="qty-number">0</span>
-                            <button class="btn-buy add-to-cart cyber-btn-neon" data-id="3" data-name="Cpanel & Respanel" data-price="2000">+</button>
-                        </div>
+                    <h3 style="font-size: 14px; color: #fff; margin-bottom: 6px; line-height: 1.3; font-family: 'Rajdhani', sans-serif; font-weight: 700; height: 36px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">CPANEL & RESPANEL SERVER</h3>
+                    <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="price" style="font-size: 14px; font-family: 'Orbitron', sans-serif; color: var(--cyber-blue);">Rp 2.000</span>
+                        <span id="front-qty-3" style="font-size: 11px; color: var(--cyber-pink); font-weight: bold; display: none;">[x0]</span>
                     </div>
                 </div>
 
             </div>
+        </section>
+
+        <!-- POP-UP DETAIL DESKRIPSI PRODUK (MODAL TERSEMBUYI) -->
+        <div id="product-detail-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 5, 10, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 1000005; justify-content: center; align-items: flex-start; padding: 20px; overflow-y: auto;">
+            <div class="glass-card" style="width: 100%; max-width: 420px; padding: 25px; border-top: 4px solid var(--cyber-blue); box-shadow: 0 0 30px rgba(0, 240, 255, 0.2); position: relative; margin-top: 20px; margin-bottom: 20px;">
+                <button onclick="closeProductDetail()" style="position: absolute; top: 12px; right: 15px; background: transparent; border: none; color: var(--cyber-pink); font-size: 26px; cursor: pointer;">&times;</button>
+                
+                <div style="width: 100%; height: 200px; border-radius: 8px; overflow: hidden; margin-bottom: 15px; border: 1px solid var(--glass-border);">
+                    <img id="modal-p-img" src="" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                
+                <h3 id="modal-p-title" style="color: #fff; font-size: 18px; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;"></h3>
+                <p id="modal-p-price" style="font-family: 'Orbitron', sans-serif; font-size: 18px; color: var(--cyber-blue); margin-bottom: 15px;"></p>
+                
+                <!-- Ruang Deskripsi Dinamis -->
+                <div id="modal-p-desc" style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; text-align: left; line-height: 1.5; font-size: 14px; color: #e0e0ff; max-height: 200px; overflow-y: auto;"></div>
+                
+                <!-- Kontrol Jumlah Kuantitas Pesanan -->
+                <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(35, 35, 41, 0.6); padding: 10px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                    <span style="font-size: 14px; font-weight: bold; color: #fff;">ATUR JUMLAH PESANAN:</span>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <button id="modal-minus-btn" style="width: 28px; height: 28px; background: #ff0055; color: #fff; border: none; border-radius: 4px; font-weight: bold; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 5px #ff0055;">-</button>
+                        <span id="modal-p-qty" style="font-family: 'Orbitron', sans-serif; font-size: 15px; color: #00f0ff; font-weight: bold; min-width: 16px; text-align: center;">0</span>
+                        <button id="modal-plus-btn" style="width: 28px; height: 28px; background: #00f0ff; color: #000; border: none; border-radius: 4px; font-weight: bold; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 5px #00f0ff;">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         </section>
 
         <!-- KELOLA PESANAN & TOTAL -->
