@@ -849,3 +849,15 @@ footer {
         transform: scale(1); 
     }
 }
+
+/* Styling transisi mulus kartu grid sederhana gaya Lazada */
+.product-card-simple {
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    transition: transform 0.2s, border-color 0.2s;
+}
+.product-card-simple:active {
+    transform: scale(0.97);
+    border-color: var(--cyber-blue);
+}
