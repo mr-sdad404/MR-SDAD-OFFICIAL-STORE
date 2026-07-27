@@ -314,7 +314,7 @@ const daftarIklanSdad = [
         linkWA: "https://wa.me/6285133431132", // Bisa dimasukkan link grup JB WhatsApp Anda
         htmlTeks: `
             <strong style="color: #ff00ff; display: block; margin-bottom: 8px; text-align: center; font-family: 'Orbitron', sans-serif;">⚡ RUANG PROMOSI KOSONG ⚡</strong>
-            • 📢 RUANG PROMOSI INI ( KOSONG )<br>
+            • 📢 RUANG PROMOSI INI (KOSONG)<br>
             • 🌐 BAGI ANDA YANG INGIN MENGGUNAKAN LAYANAN PROMOSI BISA HUBUNGI / KLIK TOMBOL DI BAWAH INI 👇🏻<br>
             • 📦 CPANEL READY:<br>
             • 🔥 Stok terbatas! Klik tombol di bawah untuk join group info/klaim promo Anda sekarang sebelum kehabisan!.
@@ -350,3 +350,106 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
             
+// Database Konten Deskripsi Produk untuk Pop-up Dinamis
+const dbDeskripsiProduk = {
+    "1": {
+        title: "JASA SEWA MR-SDADBOT MD",
+        img: "sewabot.jpg",
+        priceStr: "Mulai Rp 5.000",
+        priceNum: 5000,
+        desc: `<strong>🤖 FITUR UTAMA:</strong><br>• <span style="color:#ff00ff;">700+ Fitur Premium</span><br>• <span style="color:#00ffff;">Sistem Perlindungan Grup</span><br>• <span style="color:#00ffcc;">Aktif 24 Jam</span><br>• <span style="color:#ffff00;">Pembaruan Berkala</span><br><br><strong>💰 AKSES PREMIUM:</strong><br>🗓️ 7 HARI ➜ Rp 10.000<br>🗓️ 30 HARI ➜ Rp 20.000<br>👑 PERMANEN ➜ Rp 60.000<br><br><small style="color:#ff3333;">⚠️ Jangan menunggu harga naik baru membeli. Akses permanen tidak selalu tersedia.</small>`
+    },
+    "2": {
+        title: "JASA PEMBUATAN WEBSITE PRO",
+        img: "website.png",
+        priceStr: "Mulai Rp 50.000",
+        priceNum: 50000,
+        desc: `Buat website profesional, modern, responsif, dan sesuai kebutuhan Anda bersama MR-SDAD!<br><br><strong>✨ FITUR UTAMA LAYANAN:</strong><br>• Bisa Request Desain sesuka kamu!<br>• Mulai Rp 50 Ribu saja loh!<br>• Sudah mendapatkan Website Siap Landing.<br><br><strong>🎯 COCOK UNTUK KATEGORI:</strong><br>Toko Online, Company Profile, Landing Page, Portofolio.`
+    },
+    "3": {
+        title: "CPANEL & RESPANEL SERVER",
+        img: "panel.png",
+        priceStr: "Mulai Rp 2.000",
+        priceNum: 2000,
+        desc: `Kelola hosting dan server dengan lebih mudah, praktis, dan fleksibel bersama MR-SDAD PANEL!<br><br><strong>💜 LAYANAN RESPANEL:</strong><br>• Masa Aktif 14 Hari ➜ Rp 10.000<br>• Perpanjang 30 Hari ➜ Rp 10.000<br><br><strong>💻 LAYANAN CPANEL:</strong><br>• Kapasitas 1GB – 10GB ➜ Rp 2.000 sd Rp 6.000<br>• Kapasitas Unlimited ➜ Rp 8.000<br><br><small style="color:#ff3333;">⚠️ Masa aktif Cpanel: 20 Hari<br>🛡️ Garansi bebas replace: 14 Hari</small>`
+    }
+};
+
+// Menyimpan ID produk yang sedang aktif dibuka oleh pembeli
+let activeProductIdInModal = null;
+
+// Fungsi Membuka Jendela Deskripsi Pop-up Detail
+window.openProductDetail = function(id) {
+    activeProductIdInModal = id;
+    const data = dbDeskripsiProduk[id];
+    if (!data) return;
+
+    // Masukkan data ke komponen modal pop-up
+    document.getElementById('modal-p-img').src = data.img;
+    document.getElementById('modal-p-title').textContent = data.title;
+    document.getElementById('modal-p-price').textContent = data.priceStr;
+    document.getElementById('modal-p-desc').innerHTML = data.desc;
+
+    // Perbarui fungsi klik tombol plus/minus di dalam modal agar mengacu pada data yang benar
+    document.getElementById('modal-plus-btn').onclick = () => tambahItemDariModal(id, data.title, data.priceNum);
+    document.getElementById('modal-minus-btn').onclick = () => kurangItemDariModal(id);
+
+    // Sinkronkan angka kuantitas awal di modal
+    const itemDiKeranjang = cart.find(item => item.id === id);
+    document.getElementById('modal-p-qty').textContent = itemDiKeranjang ? itemDiKeranjang.quantity : "0";
+
+    document.getElementById('product-detail-modal').style.display = "flex";
+    document.body.style.overflow = "hidden"; // Kunci layar belakang
+};
+
+window.closeProductDetail = function() {
+    document.getElementById('product-detail-modal').style.display = "none";
+    document.body.style.overflow = "auto";
+    activeProductIdInModal = null;
+};
+
+function tambahItemDariModal(id, name, price) {
+    const existing = cart.find(item => item.id === id);
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push({ id, name, price, quantity: 1 });
+    }
+    renderCart();
+    flashNavCart();
+    // Sinkronkan angka live di modal
+    document.getElementById('modal-p-qty').textContent = cart.find(item => item.id === id).quantity;
+}
+
+function kurangItemDariModal(id) {
+    const existing = cart.find(item => item.id === id);
+    if (existing) {
+        if (existing.quantity > 1) {
+            existing.quantity -= 1;
+            document.getElementById('modal-p-qty').textContent = existing.quantity;
+        } else {
+            cart = cart.filter(item => item.id !== id);
+            document.getElementById('modal-p-qty').textContent = "0";
+        }
+    }
+    renderCart();
+}
+
+// Fungsi Update Indikator Angka di Halaman Depan & Modal
+function updateFrontDisplays() {
+    for (let i = 1; i <= 3; i++) {
+        const fQty = document.getElementById(`front-qty-${i}`);
+        if (fQty) fQty.style.display = "none";
+    }
+    cart.forEach(item => {
+        const fQty = document.getElementById(`front-qty-${item.id}`);
+        if (fQty) {
+            fQty.textContent = `[x${item.quantity}]`;
+            fQty.style.display = "inline";
+        }
+        // Jika modal sedang terbuka, ikut sinkronkan angkanya
+        if (activeProductIdInModal === item.id) {
+            document.getElementById('modal-p-qty').textContent = item.quantity;
+        }
+    });
+}
