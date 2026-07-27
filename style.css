@@ -15,7 +15,7 @@
 }
 
 /* =========================================================================
-   PERBAIKAN TOTAL MODE TERANG: ANTI-SAMAR, HITAM PEKAT, & PUTIH MAKSIMAL
+   PERBAIKAN FINAL & KOMPREHENSIF MODE TERANG (ANTI SAMAR & KONTRAS MAKSIMAL)
    ========================================================================= */
 .light-theme {
     --cyber-black: #fafafa; /* Putih bersih maksimal untuk latar belakang dasar */
@@ -23,36 +23,72 @@
     --cyber-blue: #007a87;
     --cyber-purple: #5200ba;
     
-    /* Menaikkan tingkat ketebalan warna putih kaca kristal menjadi 98% solid */
+    /* Mengunci ketebalan warna latar belakang kaca putih kristal menjadi 98% solid */
     --glass-bg: rgba(255, 255, 255, 0.98);
     --glass-border: rgba(0, 0, 0, 0.18);
     
-    /* Mengubah variabel warna teks dasar website menjadi hitam pekat */
+    /* Teks dasar beralih ke warna hitam pekat */
     --text-color-base: #111116;
     --bg-overlay: linear-gradient(135deg, rgba(250, 250, 250, 0.95) 0%, rgba(230, 235, 245, 0.98) 100%);
 }
 
-/* MANDATORY FIX: Memaksa semua teks abu-abu, teks judul keranjang, nama produk, 
-   dan harga yang pudar di gambar agar otomatis berubah menjadi hitam pekat */
+/* 🎯 MASTER SELEKTOR AGRESIF: Memaksa seluruh teks samar pada 4 gambar screenshot
+   Anda otomatis berubah menjadi hitam pekat tajam dan menghapus efek glow neon yang silau */
+.light-theme .ticker-content span,
+.light-theme #product-section class,
+.light-theme #product-section h2,
+.light-theme .product-card-simple h3,
+.light-theme .product-card-simple .price,
+.light-theme .product-desc,
+.light-theme .sidebar-title,
+.light-theme .sidebar-link,
+.light-theme .sidebar-footer p,
 .light-theme .cart-container h2,
 .light-theme .cart-list li,
 .light-theme .cart-list span,
 .light-theme .cart-list div,
 .light-theme .total-box span,
 .light-theme #cart-total,
-.light-theme .product-desc,
+.light-theme #qris-modal h3,
 .light-theme #qris-modal p,
 .light-theme #qris-modal small,
 .light-theme #qris-modal span,
+.light-theme #promo-modal h3,
+.light-theme #promo-modal p,
+.light-theme #promo-modal div,
+.light-theme #product-detail-modal h3,
 .light-theme #product-detail-modal p,
 .light-theme #product-detail-modal div,
-.light-theme #product-detail-modal span {
-    color: #111116 !important; /* Paksa total menjadi hitam pekat tajam */
-    text-shadow: none !important; /* Hilangkan bayangan neon biru agar teks tidak blur */
+.light-theme #product-detail-modal span,
+.light-theme #modal-p-title,
+.light-theme #modal-p-price,
+.light-theme #modal-p-desc,
+.light-theme #modal-p-desc span,
+.light-theme #modal-p-desc strong {
+    color: #111116 !important; /* Paksa total ke warna hitam legam */
+    text-shadow: none !important; /* Hilangkan bayangan teks yang membuat tulisan blur */
 }
 
-/* Memperbaiki tampilan kotak input catatan pelanggan agar teks petunjuk di dalamnya 
-   (placeholder) berwarna abu-abu gelap kontras, dan teks ketikan pembeli berwarna hitam pekat */
+/* GAMBAR 2 FIX: Memperbaiki teks sub-versi pada pop-up iklan agar kontras */
+.light-theme #promo-version-text {
+    color: var(--cyber-blue) !important;
+    text-shadow: none !important;
+}
+
+/* GAMBAR 3 FIX: Memperbaiki menu sidebar agar teks link menu berubah hitam tajam saat disentuh */
+.light-theme .sidebar-link:hover {
+    color: var(--cyber-pink) !important;
+    text-shadow: none !important;
+}
+
+/* GAMBAR 4 FIX: Memperbaiki warna teks di dalam kotak abu-abu deskripsi detail produk */
+.light-theme #modal-p-desc {
+    background: rgba(0, 0, 0, 0.06) !important; /* Mengubah kotak hitam transparan jadi abu-abu tipis kontras */
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #111116 !important;
+}
+
+/* Memperbaiki tampilan kotak input catatan pelanggan agar kontras */
 .light-theme #customer-note {
     background: #ffffff !important;
     border: 1px solid rgba(0, 0, 0, 0.2) !important;
@@ -60,7 +96,7 @@
 }
 
 .light-theme #customer-note::placeholder {
-    color: #555566 !important; /* Teks contoh di dalam kotak catatan jadi abu-abu gelap agar terbaca jelas */
+    color: #555566 !important; 
     opacity: 1;
 }
 
