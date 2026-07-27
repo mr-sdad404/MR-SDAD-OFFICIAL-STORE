@@ -15,36 +15,53 @@
 }
 
 /* =========================================================================
-   PERBAIKAN UPGRADE MODE TERANG: KONTRAS TINGGI, JELAS, & MATANG
+   PERBAIKAN TOTAL MODE TERANG: ANTI-SAMAR, HITAM PEKAT, & PUTIH MAKSIMAL
    ========================================================================= */
 .light-theme {
-    --cyber-black: #f5f6fa;
+    --cyber-black: #fafafa; /* Putih bersih maksimal untuk latar belakang dasar */
     --cyber-pink: #d10068;
     --cyber-blue: #007a87;
     --cyber-purple: #5200ba;
     
-    /* Membuat latar belakang kaca kristal lebih tebal putihnya */
-    --glass-bg: rgba(255, 255, 255, 0.94);
-    --glass-border: rgba(0, 0, 0, 0.15);
+    /* Menaikkan tingkat ketebalan warna putih kaca kristal menjadi 98% solid */
+    --glass-bg: rgba(255, 255, 255, 0.98);
+    --glass-border: rgba(0, 0, 0, 0.18);
     
-    /* KUNCI UTAMA: Mengubah teks dasar menjadi hitam pekat agar sangat tajam */
+    /* Mengubah variabel warna teks dasar website menjadi hitam pekat */
     --text-color-base: #111116;
-    --bg-overlay: linear-gradient(135deg, rgba(245, 246, 250, 0.9) 0%, rgba(220, 225, 235, 0.95) 100%);
+    --bg-overlay: linear-gradient(135deg, rgba(250, 250, 250, 0.95) 0%, rgba(230, 235, 245, 0.98) 100%);
 }
 
-/* KODE TAMBAHAN: Memaksa teks deskripsi kecil di dalam modal & kartu produk 
-   ikut berubah menjadi hitam pekat saat mode terang aktif */
+/* MANDATORY FIX: Memaksa semua teks abu-abu, teks judul keranjang, nama produk, 
+   dan harga yang pudar di gambar agar otomatis berubah menjadi hitam pekat */
+.light-theme .cart-container h2,
+.light-theme .cart-list li,
+.light-theme .cart-list span,
+.light-theme .cart-list div,
+.light-theme .total-box span,
+.light-theme #cart-total,
 .light-theme .product-desc,
 .light-theme #qris-modal p,
 .light-theme #qris-modal small,
+.light-theme #qris-modal span,
 .light-theme #product-detail-modal p,
-.light-theme #product-detail-modal div {
-    color: #111116 !important; /* Paksa teks abu-abu pudar berubah jadi hitam tajam */
+.light-theme #product-detail-modal div,
+.light-theme #product-detail-modal span {
+    color: #111116 !important; /* Paksa total menjadi hitam pekat tajam */
+    text-shadow: none !important; /* Hilangkan bayangan neon biru agar teks tidak blur */
 }
 
-/* Memastikan teks box total wajib dibayar di pop-up QRIS tetap terbaca rapi */
-.light-theme #qris-modal span {
-    color: #22222b;
+/* Memperbaiki tampilan kotak input catatan pelanggan agar teks petunjuk di dalamnya 
+   (placeholder) berwarna abu-abu gelap kontras, dan teks ketikan pembeli berwarna hitam pekat */
+.light-theme #customer-note {
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    color: #111116 !important;
+}
+
+.light-theme #customer-note::placeholder {
+    color: #555566 !important; /* Teks contoh di dalam kotak catatan jadi abu-abu gelap agar terbaca jelas */
+    opacity: 1;
 }
 
 /* Menjaga agar tombol konfirmasi WhatsApp tetap menyala terang di mode terang */
