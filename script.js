@@ -372,7 +372,14 @@ const dbDeskripsiProduk = {
         priceStr: "Mulai Rp 2.000",
         priceNum: 2000,
         desc: `Kelola hosting dan server dengan lebih mudah, praktis, dan fleksibel bersama MR-SDAD PANEL!<br><br><strong>💜 LAYANAN RESPANEL:</strong><br>• Masa Aktif 14 Hari ➜ Rp 10.000<br>• Perpanjang 30 Hari ➜ Rp 10.000<br><br><strong>💻 LAYANAN CPANEL:</strong><br>• Kapasitas 1GB – 10GB ➜ Rp 2.000 sd Rp 6.000<br>• Kapasitas Unlimited ➜ Rp 8.000<br><br><small style="color:#ff3333;">⚠️ Masa aktif Cpanel: 20 Hari<br>🛡️ Garansi bebas replace: 14 Hari</small>`
-    }
+    },
+        "4": {
+        title: "NOKOS — NOMOR KOSONG",
+        img: "nokos.png",
+        priceStr: "Mulai Rp 1.000",
+        priceNum: 1000,
+        desc: `<strong>✨ KEUNGGULAN UTAMA:</strong><br>• Tersedia untuk <span style="color:#00ffff;">WhatsApp, Telegram, DANA, GoPay, Google</span>, dan platform lainnya!<br>• <span style="color:#00ffcc;">Proses instan dan cepat</span><br>• <span style="color:#ff00ff;">Privasi dan keamanan terjamin</span><br><br><strong>💰 DAFTAR HARGA:</strong><br>⚡ Harga mulai ➜ Rp 1.000 saja!<br><br><small style="color:#ffff00;">🚀 Dapatkan NOKOS sesuai kebutuhanmu hanya di MR-SDAD STORE!</small>`
+   }
 };
 
 // Menyimpan ID produk yang sedang aktif dibuka oleh pembeli
