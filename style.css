@@ -966,21 +966,21 @@ footer {
     border-color: var(--cyber-blue);
 }
 
-/* WIDGET LIVE CHAT */
+/* WIDGET LIVE CHAT - UPDATE POSISI AGAR TIDAK BENTROK */
 .chat-widget-container {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 95px;       /* Dinaikkan menjadi 95px dari bawah agar berada tepat di atas tombol WhatsApp */
+    right: 24px;        /* Jarak dari kanan */
     width: 320px;
     height: 450px;
-    background: #111424; /* Menyesuaikan tema gelap store */
+    background: #111424; 
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 10000;     /* Menaikkan tingkat layer agar berada di paling depan */
 }
 
 .chat-header {
