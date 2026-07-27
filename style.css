@@ -34,6 +34,7 @@
 
 /* 🎯 MASTER SELEKTOR AGRESIF: Memaksa seluruh teks samar pada 4 gambar screenshot
    Anda otomatis berubah menjadi hitam pekat tajam dan menghapus efek glow neon yang silau */
+.light-theme .broadcast-header h2,
 .light-theme .ticker-content span,
 .light-theme #product-section class,
 .light-theme #product-section h2,
@@ -67,6 +68,12 @@
 .light-theme #modal-p-desc strong {
     color: #111116 !important; /* Paksa total ke warna hitam legam */
     text-shadow: none !important; /* Hilangkan bayangan teks yang membuat tulisan blur */
+}
+
+/* GAMBAR 1 FIX: Memperbaiki teks kuning berjalan di Live Broadcast System */
+.light-theme .ticker-content span {
+    color: #111116 !important;
+    text-shadow: 0 0 1px rgba(0,0,0,0.1) !important;
 }
 
 /* GAMBAR 2 FIX: Memperbaiki teks sub-versi pada pop-up iklan agar kontras */
