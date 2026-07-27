@@ -453,3 +453,45 @@ function updateFrontDisplays() {
         }
     });
 }
+
+// =========================================================================
+// SINKRONISASI FITUR SAKELAR MODE TERANG / GELAP DENGAN MEMORI LOCALSTORAGE
+// =========================================================================
+window.toggleThemeSystem = function() {
+    const body = document.body;
+    const btn = document.getElementById('theme-toggle-btn');
+    
+    if (!btn) return;
+
+    // Lakukan cek balik perpindahan kelas tema pada tag body
+    if (body.classList.contains('light-theme')) {
+        body.classList.remove('light-theme');
+        btn.innerHTML = "🌙 DARK MODE";
+        btn.style.borderColor = "var(--cyber-blue)";
+        btn.style.color = "var(--cyber-blue)";
+        localStorage.setItem('mrSdadTheme', 'dark'); // Simpan status pilihan gelap ke memori
+    } else {
+        body.classList.add('light-theme');
+        btn.innerHTML = "☀️ LIGHT MODE";
+        btn.style.borderColor = "var(--cyber-pink)";
+        btn.style.color = "var(--cyber-pink)";
+        localStorage.setItem('mrSdadTheme', 'light'); // Simpan status pilihan terang ke memori
+    }
+};
+
+// Cek otomatis memori browser pelanggan saat pertama kali halaman selesai dimuat
+document.addEventListener("DOMContentLoaded", () => {
+    const temaTersimpan = localStorage.getItem('mrSdadTheme');
+    const body = document.body;
+    const btn = document.getElementById('theme-toggle-btn');
+
+    if (temaTersimpan === 'light') {
+        body.classList.add('light-theme');
+        if (btn) {
+            btn.innerHTML = "☀️ LIGHT MODE";
+            btn.style.borderColor = "var(--cyber-pink)";
+            btn.style.color = "var(--cyber-pink)";
+        }
+    }
+});
+    
