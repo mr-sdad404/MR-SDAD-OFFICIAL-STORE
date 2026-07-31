@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏪 MR-SDAD STORE</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Latar Belakang Gambar Kustom + Animasi Cyberpunk -->
+    <div class="cyber-bg">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+    </div>
+
+    <!-- Header / Navigasi Glassmorphism dengan Sidebar Toggle -->
+    <header class="glass-card">
+        <div class="logo">
+    <div class="logo-marquee-wrap">
+        <span class="logo-text">💯 MR-SDAD OFFICIAL STORE &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="logo-text" aria-hidden="true">💯 MR-SDAD OFFICIAL STORE &nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+</div>
+        
+        <!-- Tombol Hamburger untuk Buka Sidebar -->
+        <button class="sidebar-toggle-btn" id="open-sidebar-btn" aria-label="Buka Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </header>
+
+    <!-- PANEL SIDEBAR CYBERPUNK (Meluncur dari Kanan) -->
+    <div class="cyber-sidebar-overlay" id="sidebar-overlay"></div>
+    <aside class="cyber-sidebar glass-card" id="cyber-sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-title">🛍️ MR-SDAD OFFICIAL STORE</div>
+            <!-- Tombol untuk Tutup Sidebar -->
+            <button class="close-sidebar-btn" id="close-sidebar-btn">&times;</button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#broadcast-section" class="sidebar-link"><span class="neon-text-pink">📢</span> BROADCAST</a>
+            <a href="#product-section" class="sidebar-link"><span class="neon-text-blue">🛍️</span> PRODUCTS</a>
+            <a href="#cart-section" class="sidebar-link cart-nav"><span class="neon-text-pink">🛒</span> KERANJANG (<span id="cart-count">0</span>)</a>
+                    <!-- Tombol Live Chat di Sidebar -->
+<div class="sidebar-item" onclick="toggleLiveChat()" style="cursor: pointer; display: flex; align-items: center; padding: 10px 15px; color: #fff; font-family: 'Rajdhani', sans-serif; font-weight: 600;">
+    <span style="margin-right: 10px;">💬</span> Live Chat Support
+</div
+            <!-- TOMBOL FITUR SAKELAR MODE TERANG / GELAP (BARU) -->
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 5px; margin-top: 10px; border-top: 1px solid var(--glass-border);">
+                <span style="font-size: 15px; font-weight: 700; color: var(--text-color-base); font-family: 'Orbitron', sans-serif; letter-spacing: 1px;">🎨 MODE TAMPILAN</span>
+                <button id="theme-toggle-btn" onclick="toggleThemeSystem()" style="padding: 6px 12px; background: rgba(0,0,0,0.4); border: 1px solid var(--cyber-blue); border-radius: 20px; color: var(--cyber-blue); font-size: 13px; font-family: 'Orbitron', sans-serif; font-weight: bold; cursor: pointer; box-shadow: 0 0 5px rgba(0, 240, 255, 0.2); transition: all 0.3s;">
+                    🌙 DARK MODE
+                </button>
+    </div>
+        </nav>
+        <div class="sidebar-footer">
+            <p>MR-SDAD_SYSTEM v2.2.4</p>
+        </div>
+    </aside>
+        
+    <main class="container">
+        <!-- KOLOM BROADCAST (Pemberitahuan Berjalan Lancar Seamless Loop) -->
+        <section id="broadcast-section" class="glass-card broadcast-container">
+            <div class="broadcast-header">
+                <span class="live-indicator-green"></span>
+                <h2>📢LIVE BROADCAST SYSTEM</h2>
+            </div>
+            <div class="broadcast-ticker">
+                <div class="ticker-wrap">
+                    <!-- ISI UTAMA TEXT MARQUEE -->
+                    <div class="ticker-content">
+                        <span style="color: #ff00ff; text-shadow: 0 0 8px #ff00ff; margin-right: 40px;">⚠️ MR-SDAD STORE KINI RESMI OPEN DI WEBSITE STORE.</span>
+                        <span style="color: #ffff00; text-shadow: 0 0 8px #ffff00; margin-right: 40px;">🔥 FLASH SALE MR-SDAD STORE: Dapatkan diskon item digital hingga 40% Untuk Min Transaksi Rp 150.000!</span>
+                        <span style="color: #00ffff; text-shadow: 0 0 8px #00ffff; margin-right: 40px;">🛡️ SECURE NODE: Transaksi dijamin aman langsung via enkripsi WhatsApp Owner.</span>
+                    </div>
+                    <!-- DUPLIKASI TEXT UNTUK EFEK LOOP TANPA JEDA -->
+                    <div class="ticker-content" aria-hidden="true">
+                        <span style="color: #ff00ff; text-shadow: 0 0 8px #ff00ff; margin-right: 40px;">⚠️ MR-SDAD STORE KINI RESMI OPEN DI WEBSITE STORE.</span>
+                        <span style="color: #ffff00; text-shadow: 0 0 8px #ffff00; margin-right: 40px;">🔥 FLASH SALE MR-SDAD STORE: Dapatkan diskon item digital hingga 40% Untuk Min Transaksi Rp 150.000!</span>
+                        <span style="color: #00ffff; text-shadow: 0 0 8px #00ffff; margin-right: 40px;">🛡️ SECURE NODE: Transaksi dijamin aman langsung via enkripsi WhatsApp Owner.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+                <!-- KOLOM PRODUK GAYA MARKETPLACE (TWO-COLUMN GRID) -->
+        <section id="product-section">
+            <h2 class="section-title">🛍️PRODUCT MR-SDAD STORE</h2>
+            <div class="product-grid" style="display: grid; grid-template-columns: repeat(2, 1fr) !important; gap: 12px; margin-bottom: 50px;">
+                
+                <!-- Produk 1 -->
+                <div class="glass-card product-card-simple" onclick="openProductDetail('1')" style="padding: 10px; cursor: pointer; display: flex; flex-direction: column; height: 100%;">
+                    <div class="product-img-wrapper" style="height: 140px; margin-bottom: 8px; position: relative;">
+                        <img src="sewabot.jpg" alt="Sewa Bot" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
+                        <span class="badge badge-blue" style="font-size: 10px; padding: 2px 6px;">💯BOT WA MULTI FUNGSI</span>
+                    </div>
+                    <h3 style="font-size: 14px; color: #fff; margin-bottom: 6px; line-height: 1.3; font-family: 'Rajdhani', sans-serif; font-weight: 700; height: 36px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">JASA SEWA MR-SDADBOT MD</h3>
+                    <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="price" style="font-size: 14px; font-family: 'Orbitron', sans-serif; color: var(--cyber-blue);">Rp 5.000</span>
+                        <!-- Indikator kecil jika item sudah masuk keranjang -->
+                        <span id="front-qty-1" style="font-size: 11px; color: var(--cyber-pink); font-weight: bold; display: none;">[x0]</span>
+                    </div>
+                </div>
+
+                <!-- Produk 2 -->
+                <div class="glass-card product-card-simple" onclick="openProductDetail('2')" style="padding: 10px; cursor: pointer; display: flex; flex-direction: column; height: 100%;">
+                    <div class="product-img-wrapper" style="height: 140px; margin-bottom: 8px; position: relative;">
+                        <img src="website.png" alt="Jasa Website" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
+                        <span class="badge badge-blue" style="font-size: 10px; padding: 2px 6px;">🌐WEB</span>
+                    </div>
+                    <h3 style="font-size: 14px; color: #fff; margin-bottom: 6px; line-height: 1.3; font-family: 'Rajdhani', sans-serif; font-weight: 700; height: 36px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">JASA PEMBUATAN WEBSITE</h3>
+                    <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="price" style="font-size: 14px; font-family: 'Orbitron', sans-serif; color: var(--cyber-blue);">Rp 50.000</span>
+                        <span id="front-qty-2" style="font-size: 11px; color: var(--cyber-pink); font-weight: bold; display: none;">[x0]</span>
+                    </div>
+                </div>
+
+                <!-- Produk 3 -->
+                <div class="glass-card product-card-simple" onclick="openProductDetail('3')" style="padding: 10px; cursor: pointer; display: flex; flex-direction: column; height: 100%;">
+                    <div class="product-img-wrapper" style="height: 140px; margin-bottom: 8px; position: relative;">
+                        <img src="panel.png" alt="Cyber Panel" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
+                        <span class="badge badge-blue" style="font-size: 10px; padding: 2px 6px;">👨‍💻PANEL</span>
+                    </div>
+                    <h3 style="font-size: 14px; color: #fff; margin-bottom: 6px; line-height: 1.3; font-family: 'Rajdhani', sans-serif; font-weight: 700; height: 36px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">CPANEL & RESPANEL SERVER</h3>
+                    <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="price" style="font-size: 14px; font-family: 'Orbitron', sans-serif; color: var(--cyber-blue);">Rp 2.000</span>
+                        <span id="front-qty-3" style="font-size: 11px; color: var(--cyber-pink); font-weight: bold; display: none;">[x0]</span>
+                    </div>
+                </div>
+
+                <!-- Produk 4 -->
+                <div class="glass-card product-card-simple" onclick="openProductDetail('4')" style="padding: 10px; cursor: pointer; display: flex; flex-direction: column; height: 100%;">
+                    <div class="product-img-wrapper" style="height: 140px; margin-bottom: 8px; position: relative;">
+                        <img src="nokos.png" alt="NOKOS — NOMOR KOSONG" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
+                        <span class="badge badge-pink" style="font-size: 10px; padding: 2px 6px;">🔥 STOCK HABIS</span>
+                    </div>
+                    <h3 style="font-size: 14px; color: #fff; margin-bottom: 6px; line-height: 1.3; font-family: 'Rajdhani', sans-serif; font-weight: 700; height: 36px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">NOKOS — NOMOR KOSONG</h3>
+                    <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="price" style="font-size: 14px; font-family: 'Orbitron', sans-serif; color: var(--cyber-blue);">Rp 1.000</span>
+                        <!-- Indikator kecil jika item sudah masuk keranjang -->
+                        <span id="front-qty-4" style="font-size: 11px; color: var(--cyber-pink); font-weight: bold; display: none;">[x0]</span>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- POP-UP DETAIL DESKRIPSI PRODUK (MODAL TERSEMBUYI) -->
+        <div id="product-detail-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 5, 10, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 1000005; justify-content: center; align-items: flex-start; padding: 20px; overflow-y: auto;">
+            <div class="glass-card" style="width: 100%; max-width: 420px; padding: 25px; border-top: 4px solid var(--cyber-blue); box-shadow: 0 0 30px rgba(0, 240, 255, 0.2); position: relative; margin-top: 20px; margin-bottom: 20px;">
+                <button onclick="closeProductDetail()" style="position: absolute; top: 12px; right: 15px; background: transparent; border: none; color: var(--cyber-pink); font-size: 26px; cursor: pointer;">&times;</button>
+                
+                <div style="width: 100%; height: 200px; border-radius: 8px; overflow: hidden; margin-bottom: 15px; border: 1px solid var(--glass-border);">
+                    <img id="modal-p-img" src="" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                
+                <h3 id="modal-p-title" style="color: #fff; font-size: 18px; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;"></h3>
+                <p id="modal-p-price" style="font-family: 'Orbitron', sans-serif; font-size: 18px; color: var(--cyber-blue); margin-bottom: 15px;"></p>
+                
+                <!-- Ruang Deskripsi Dinamis -->
+                <div id="modal-p-desc" style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; text-align: left; line-height: 1.5; font-size: 14px; color: #e0e0ff; max-height: 200px; overflow-y: auto;"></div>
+                
+                <!-- Kontrol Jumlah Kuantitas Pesanan -->
+                <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(35, 35, 41, 0.6); padding: 10px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                    <span style="font-size: 14px; font-weight: bold; color: #fff;">ATUR JUMLAH PESANAN:</span>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <button id="modal-minus-btn" style="width: 28px; height: 28px; background: #ff0055; color: #fff; border: none; border-radius: 4px; font-weight: bold; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 5px #ff0055;">-</button>
+                        <span id="modal-p-qty" style="font-family: 'Orbitron', sans-serif; font-size: 15px; color: #00f0ff; font-weight: bold; min-width: 16px; text-align: center;">0</span>
+                        <button id="modal-plus-btn" style="width: 28px; height: 28px; background: #00f0ff; color: #000; border: none; border-radius: 4px; font-weight: bold; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 5px #00f0ff;">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </section>
+
+        <!-- KELOLA PESANAN & TOTAL -->
+        <section id="cart-section" class="glass-card cart-container">
+            <h2>KERANJANG ANDA</h2>
+            <ul id="cart-items" class="cart-list">
+                <li class="empty-msg">Klik (+) pada prodact yang ingin anda beli sesuaikan harga nya dengan klik (+) bbrp kali, tuliskan nama layanan prodact yang ingin anda pesan.</li>
+            </ul>
+                        <div class="cart-summary">
+                <!-- FORM INPUT CATATAN PELANGGAN (FITUR BARU) -->
+                <div style="width: 100%; text-align: left; margin-bottom: 5px;">
+                    <label style="display: block; font-size: 14px; color: var(--cyber-blue); margin-bottom: 6px; font-family: 'Orbitron', sans-serif; letter-spacing: 1px;">📝 CATATAN PELANGGAN :</label>
+                    <textarea id="customer-note" placeholder="Contoh: Nokos / Nokos WhatsApp indo / Request Desain (khusus pembuatan web / bot)" style="width: 100%; height: 80px; padding: 10px; background: rgba(0, 0, 0, 0.5); border: 1px solid var(--glass-border); border-radius: 6px; color: #fff; font-size: 14px; font-family: 'Rajdhani', sans-serif; outline: none; resize: none; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); transition: border-color 0.3s;"></textarea>
+                </div>
+
+                <div class="total-box" style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                    <span>TOTAL PEMBAYARAN:</span>
+                    <span id="cart-total" class="neon-text-blue">Rp 0</span>
+                </div>
+                <button id="checkout-btn" class="btn-cyber-primary" style="width: 100%; margin-top: 5px;">KIRIM INVOICE & BAYAR VIA QRIS</button>
+            </div>
+        </section>
+
+        <!-- MODAL POP-UP SCAN QRIS PEMBAYARAN (SINKRONISASI BARU) -->
+        <div id="qris-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 5, 10, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 999999; justify-content: center; align-items: flex-start; padding: 20px; overflow-y: auto;">
+            <div class="glass-card" style="width: 100%; max-width: 420px; padding: 25px; border-top: 4px solid var(--cyber-blue); text-align: center; box-shadow: 0 0 30px rgba(0, 240, 255, 0.2); position: relative;">
+                <!-- Tombol Tutup Pop-Up Mini -->
+                <button onclick="closeQrisModal()" style="position: absolute; top: 12px; right: 15px; background: transparent; border: none; color: var(--cyber-pink); font-size: 24px; cursor: pointer;">&times;</button>
+                
+                <h3 style="color: #fff; font-size: 16px; margin-bottom: 5px; font-family: 'Orbitron', sans-serif;">🔒 CHECKOUT</h3>
+                <p style="font-size: 13px; color: #8a8ab0; margin-bottom: 15px;">Silakan scan kode QRIS resmi di bawah ini menggunakan e-wallet atau m-banking Anda.</p>
+                
+                <!-- Rangkuman Total Pembayaran Dinamis -->
+                <div style="background: rgba(0,0,0,0.4); padding: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 15px;">
+                    <span style="font-size: 12px; color: #a0a0c8; display: block; margin-bottom: 2px;">TOTAL WAJIB DIBAYAR:</span>
+                    <span id="modal-grand-total" style="font-family: 'Orbitron', sans-serif; font-size: 20px; color: #ffff00; text-shadow: 0 0 10px rgba(255,255,0,0.4); font-weight: bold;">Rp 0</span>
+                </div>
+
+                <!-- Gambar QRIS Anda dari repositori -->
+                <img src="qris.png" id="qris-image-node" style="width: 100%; max-width: 250px; height: auto; border: 4px solid #fff; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); margin-bottom: 15px;" alt="QRIS Payment">
+                
+                <small style="color: #ff3366; display: block; font-size: 11px; background: rgba(255,51,102,0.1); padding: 8px; border-left: 3px solid #ff3366; text-align: left; margin-bottom: 20px; line-height: 1.4;">
+                    ⚠️ WAJIB: Setelah berhasil transfer, klik tombol di bawah untuk mengirim rincian orderan & sertakan attachment lampiran SS bukti transfer Anda ke WhatsApp Owner.
+                </small>
+
+                <button id="final-whatsapp-btn" class="btn-cyber-primary" style="width: 100%; background: linear-gradient(135deg, #00ffcc 0%, #00f0ff 100%); color: #000; font-weight: 900; box-shadow: 0 0 15px #00f0ff;">KONFIRMASI + KIRIM BUKTI SS (WA)</button>
+            </div>
+        </div>
+   </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <span class="neon-text-pink">MR-SDAD</span> OFFICIAL-STORE.</p>
+    </footer>
+
+    <!-- TOMBOL WHATSAPP MELAYANG CYBERPUNK DENGAN LOGO SVG JAMINAN MUNCUL -->
+    <a href="https://wa.me/6285133431132" 
+       target="_blank" 
+       class="cyber-wa-float" 
+       aria-label="Hubungi Owner via WhatsApp">
+        <div class="wa-glow-ring"></div>
+        
+        <!-- Logo SVG WhatsApp Presisi Tinggi -->
+        <svg class="wa-svg-icon" viewBox="0 0 448 512" xmlns="http://w3.org">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
+        
+        <span class="wa-tooltip">Owner</span>
+    </a>
+
+    <script src="script.js"></script>
+    <!-- 1. Elemen Audio Lokal (Memanggil langsung dari folder website Anda) -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 2. Tombol Musik Melayang Posisi Kiri -->
+<button id="musicBtn" onclick="mulaiMusik()" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; width: 55px; height: 55px; border-radius: 50%; border: none; background: #232329; border: 2px solid #00f0ff; color: #00f0ff; cursor: pointer; box-shadow: 0px 0px 10px #00f0ff; font-size: 11px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: bold; line-height: 1.2;">
+  <span style="font-size: 16px; margin-bottom: 2px;">🎵</span>
+  <span id="btnText">Play</span>
+</button>
+
+<!-- 3. Sistem Penggerak yang Lebih Ringan -->
+<script>
+function mulaiMusik() {
+  var audio = document.getElementById("bgMusic");
+  var tombol = document.getElementById("musicBtn");
+  var teks = document.getElementById("btnText");
+  
+  if (audio.paused) {
+    audio.play();
+    teks.innerText = "Mute";
+    tombol.style.background = "#ff0055";
+    tombol.style.borderColor = "#ff0055";
+    tombol.style.boxShadow = "0px 0px 10px #ff0055";
+    tombol.style.color = "#ffffff";
+  } else {
+    audio.pause();
+    teks.innerText = "Play";
+    tombol.style.background = "#232329";
+    tombol.style.borderColor = "#00f0ff";
+    tombol.style.boxShadow = "0px 0px 10px #00f0ff";
+    tombol.style.color = "#00f0ff";
+  }
+}
+</script>
+
+                <!-- POP-UP PROMOSI AWAL MASUK WEBSITE (SISTEM IKLAN BERGANTIAN OTOMATIS) -->
+    <div id="promo-modal" style="display: flex; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 5, 10, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 1000000; justify-content: center; align-items: flex-start; padding: 20px; overflow-y: auto;">
+        <div class="glass-card" style="width: 100%; max-width: 400px; padding: 25px; border-top: 4px solid var(--cyber-pink); text-align: center; box-shadow: 0 0 30px rgba(255, 0, 127, 0.2); position: relative; animation: popUpMasuk 0.3s ease-out forwards; margin-top: 20px; margin-bottom: 20px;">
+            
+            <!-- Tombol Silang Pojok Kanan Atas -->
+            <button onclick="closePromoModal()" style="position: absolute; top: 12px; right: 15px; background: transparent; border: none; color: var(--cyber-pink); font-size: 24px; cursor: pointer; line-height: 1; transition: transform 0.2s;" onmouseover="this.style.transform='rotate(90deg)'" onmouseout="this.style.transform='rotate(0deg)'">&times;</button>
+            
+            <!-- Icon & Judul Pengumuman -->
+            <h3 style="color: #fff; font-size: 18px; margin-bottom: 5px; font-family: 'Orbitron', sans-serif; letter-spacing: 1px;">📢 MR-SDAD BROADCAST</h3>
+            <p id="promo-version-text" style="font-size: 13px; color: var(--cyber-blue); font-family: 'Orbitron', sans-serif; margin-bottom: 20px; text-shadow: 0 0 5px var(--cyber-blue);">MR-SDAD BROADCAST SYSTEM</p>
+            
+            <!-- AREA GAMBAR PROMO (DIISI OTOMATIS OLEH JS) -->
+            <div style="width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid var(--glass-border); margin-bottom: 15px; box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);">
+                <img id="promo-image-node" src="" alt="Promo Banner" style="width: 100%; height: auto; display: block; object-fit: cover;">
+            </div>
+            
+            <!-- Area Isi Teks Promosi (DIISI OTOMATIS OLEH JS) -->
+            <div id="promo-text-container" style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; text-align: left; line-height: 1.6; font-size: 14px; color: #e0e0ff;">
+                <!-- Konten teks teks iklan berubah di sini -->
+            </div>
+
+            <!-- DUA TOMBOL HUBUNGI KONTAK & LANJUTKAN KE WEB -->
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <!-- TOMBOL KONTAK (LINK DIISI OTOMATIS OLEH JS) -->
+                <a id="promo-action-link" href="" target="_blank" class="btn-cyber-primary" style="display: block; text-decoration: none; background: linear-gradient(135deg, #00ffcc 0%, #00f0ff 100%); color: #000; font-weight: 900; letter-spacing: 1px; font-family: 'Orbitron', sans-serif; box-shadow: 0 0 15px #00ffcc;">
+                    💬 HUBUNGI / JOIN GROUP WA
+                </a>
+                
+                <button onclick="closePromoModal()" class="btn-cyber-primary" style="font-weight: 900; letter-spacing: 1px; font-family: 'Orbitron', sans-serif; background: linear-gradient(135deg, var(--cyber-purple) 0%, var(--cyber-pink) 100%);">
+                    LANJUTKAN
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jendela Pop-up Live Chat -->
+<div id="liveChatWidget" class="chat-widget-container" style="display: none;">
+    <div class="chat-header">
+        <div class="chat-header-info">
+            <span class="chat-icon">💬</span>
+            <div>
+                <h4>Live Chat Support</h4>
+                <p>Biasanya dibalas beberapa jam</p>
+            </div>
+        </div>
+        <button class="chat-close-btn" onclick="toggleLiveChat()">&times;</button>
+    </div>
+    
+    <div class="chat-body" id="chatBoxBody">
+        <div class="message msg-incoming">
+            Halo! Ada yang bisa kami bantu? Sampaikan pertanyaanmu di sini.
+        </div>
+    </div>
+    
+    <div class="chat-footer">
+        <input type="text" id="chatInputMessage" placeholder="Tulis pesan..." onkeypress="handleChatKeyPress(event)">
+        <button class="chat-send-btn" onclick="sendChatMessage()">➔</button>
+    </div>
+</div>
+
+    <!-- Tombol Rahasia Owner (Sengaja dibuat transparan agar tersamar) -->
+<div id="ownerSecretBtn" onclick="openOwnerPanel()" style="position: fixed; top: 15px; right: 15px; font-size: 14px; opacity: 0.15; cursor: pointer; z-index: 10000; color: #fff; user-select: none;">
+    🔒
+</div>
+
+<!-- Panel Input Koneksi Owner -->
+<div id="ownerConnectPanel" class="glass-card" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; z-index: 10001; background: #111424; border: 1px solid var(--cyber-blue); box-shadow: 0 0 25px rgba(0,240,255,0.3); border-radius: 12px; flex-direction: column; gap: 12px;">
+    <h3 style="font-family: 'Rajdhani', sans-serif; color: #fff; margin: 0 0 5px 0; font-size: 16px;">🔑 PANEL OWNER LIVE CHAT</h3>
+    <p style="font-size: 12px; color: #8a8ab0; margin: 0;">Tempel kode sesi dari pelanggan di bawah ini untuk tersambung:</p>
+    <textarea id="ownerSessionInput" placeholder="Tempel kode sesi pelanggan di sini..." style="width: 100%; height: 80px; background: #15192e; border: 1px solid var(--glass-border); border-radius: 6px; color: #fff; padding: 8px; font-size: 11px; resize: none; outline: none;"></textarea>
+    <div style="display: flex; gap: 10px; justify-content: flex-end;">
+        <button onclick="closeOwnerPanel()" style="background: transparent; border: 1px solid var(--cyber-pink); color: var(--cyber-pink); padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;">Batal</button>
+        <button onclick="connectToCustomer()" style="background: var(--cyber-blue); border: none; color: #000; padding: 5px 12px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 12px;">Sambungkan</button>
+    </div>
+</div>
+    
+</body>
+</html>
