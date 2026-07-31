@@ -501,138 +501,132 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
-    
-const peerConfig = { iceServers: [{ urls: "stun:://google.com" }] };
-let peerConn;
-let dataChannel;
-let isOwnerMode = false;
 
-// 1. Fungsi Buka-Tutup Jendela Chat Pelanggan
+// ==========================================
+// INTEGRASI GLOBAL LIVE CHAT VIA SUPABASE
+// ==========================================
+
+// Inisialisasi Kredensial API Supabase Anda
+const SUPABASE_URL = "https://supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjbHZsa3BidW9lcnprbnBua3ZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU0NjU5NzAsImV4cCI6MjEwMTA0MTk3MH0.uC63X5w50vE2INsvda36TLq67IMIDSnAWDZGBweWpok";
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// Penanda ID Pengunjung Unik (agar bisa membedakan pesan Anda sendiri vs orang lain)
+// Disimpan di sessionStorage agar tetap konsisten selama tab browser tidak ditutup
+if (!sessionStorage.getItem('chat_sender_id')) {
+    sessionStorage.setItem('chat_sender_id', 'user_' + Math.random().toString(36).substring(2, 9));
+}
+const MY_SENDER_ID = sessionStorage.getItem('chat_sender_id');
+
+// 1. Fungsi Buka-Tutup Jendela Chat Pelanggan & Owner
 function toggleLiveChat() {
     const chatWidget = document.getElementById('liveChatWidget');
     if (chatWidget.style.display === 'none' || chatWidget.style.display === '') {
         chatWidget.style.display = 'flex';
-        // Pelanggan menginisialisasi koneksi saat membuka chat pertama kali
-        if (!peerConn && !isOwnerMode) {
-            initCustomerConnection();
-        }
+        // Muat data pesan riwayat chat terbaru langsung dari database saat jendela dibuka
+        loadChatMessages();
     } else {
         chatWidget.style.display = 'none';
     }
 }
 
-// 2. Alur Sisi Pelanggan (Membuat Offer)
-function initCustomerConnection() {
-    peerConn = new RTCPeerConnection(peerConfig);
-    dataChannel = peerConn.createDataChannel("chat");
-    setupDataChannelEvents(dataChannel);
+// 2. Fungsi Mengambil Riwayat Chat dari Database Cloud (Hanya 24 Jam Terakhir)
+async function loadChatMessages() {
+    const chatBody = document.getElementById('chatBoxBody');
+    
+    // Kembalikan ke tampilan default awal berisi pesan sambutan
+    chatBody.innerHTML = `<div class="message msg-incoming">Halo! Ada yang bisa kami bantu? Sampaikan pertanyaanmu di sini.</div>`;
 
-    peerConn.onicecandidate = e => {
-        if (!e.candidate) {
-            const customerOffer = btoa(JSON.stringify(peerConn.localDescription));
-            displaySystemMessage(`<strong>Kode Sesi Anda:</strong><br><code style="background:#202642; padding:2px 5px; border-radius:3px; font-size:10px; word-break:break-all; display:block; margin:5px 0;">${customerOffer}</code>Salin dan kirim kode ini ke Owner agar obrolan tersambung langsung.`);
-        }
-    };
+    // Ambil data teks pesan dari tabel Supabase
+    const { data, error } = await supabase
+        .from('messages')
+        .select('text, sender_id')
+        .order('created_at', { ascending: true });
 
-    peerConn.createOffer().then(offer => peerConn.setLocalDescription(offer));
-}
+    if (error) {
+        console.error("Gagal memuat pesan:", error);
+        return;
+    }
 
-// 3. Alur Sisi Owner (Menerima Offer Pelanggan & Mengembalikan Jawaban)
-function openOwnerPanel() {
-    document.getElementById('ownerConnectPanel').style.display = 'flex';
-}
-
-function closeOwnerPanel() {
-    document.getElementById('ownerConnectPanel').style.display = 'none';
-}
-
-function connectToCustomer() {
-    const inputToken = document.getElementById('ownerSessionInput').value.trim();
-    if (!inputToken) return;
-
-    isOwnerMode = true;
-    peerConn = new RTCPeerConnection(peerConfig);
-
-    // Owner mendengarkan channel yang dibuat oleh pelanggan
-    peerConn.ondatachannel = e => {
-        dataChannel = e.channel;
-        setupDataChannelEvents(dataChannel);
-    };
-
-    try {
-        const decodedOffer = JSON.parse(atob(inputToken));
-        
-        // Cek jika token tersebut adalah tawaran awal dari pelanggan
-        if (decodedOffer.type === "offer") {
-            peerConn.setRemoteDescription(new RTCSessionDescription(decodedOffer))
-                .then(() => peerConn.createAnswer())
-                .then(answer => peerConn.setLocalDescription(answer))
-                .then(() => {
-                    peerConn.onicecandidate = e => {
-                        if (!e.candidate) {
-                            const ownerAnswer = btoa(JSON.stringify(peerConn.localDescription));
-                            // Tampilkan kode jawaban untuk dikirim balik jika diperlukan otomatisasi manual
-                            alert("Koneksi diproses! Kirim balik kode konfirmasi ini ke pelanggan jika obrolan belum masuk.");
-                            console.log("Owner Answer:", ownerAnswer);
-                        }
-                    };
-                    closeOwnerPanel();
-                    // Buka widget chat di layar Owner agar bisa mengetik
-                    document.getElementById('liveChatWidget').style.display = 'flex';
-                    displaySystemMessage("Menghubungkan ke pelanggan...");
-                });
-        } else if (decodedOffer.type === "answer") {
-            // Sisi pelanggan menerima jawaban dari Owner jika koneksi tertunda
-            peerConn.setRemoteDescription(new RTCSessionDescription(decodedOffer));
-            closeOwnerPanel();
-        }
-    } catch (err) {
-        alert("Kode sesi tidak valid atau rusak!");
+    // Tampilkan seluruh pesan ke layar dengan posisi gelembung balon chat yang sesuai
+    if (data) {
+        data.forEach(msg => {
+            const bubbleType = (msg.sender_id === MY_SENDER_ID) ? "msg-outgoing" : "msg-incoming";
+            appendMessage(msg.text, bubbleType);
+        });
     }
 }
 
-// 4. Pengaturan Pengiriman & Penerimaan Teks Terpadu
-function setupDataChannelEvents(channel) {
-    channel.onopen = () => displaySystemMessage("🎉 Koneksi Terhubung Langsung!");
-    channel.onclose = () => displaySystemMessage("⚠️ Koneksi terputus.");
-    channel.onmessage = e => appendMessage(e.data, "msg-incoming");
-}
-
-function sendChatMessage() {
+// 3. Fungsi Mengirim Pesan Baru ke Cloud Database
+async function sendChatMessage() {
     const inputEl = document.getElementById('chatInputMessage');
     const msgText = inputEl.value.trim();
     if (msgText === '') return;
 
-    appendMessage(msgText, "msg-outgoing");
-    
-    if (dataChannel && dataChannel.readyState === "open") {
-        dataChannel.send(msgText);
-    }
+    // Bersihkan kolom input di layar seketika setelah tombol kirim ditekan
     inputEl.value = '';
+
+    // Kirim objek data pesan ke tabel Supabase
+    const { error } = await supabase
+        .from('messages')
+        .insert([{ text: msgText, sender_id: MY_SENDER_ID }]);
+
+    if (error) {
+        console.error("Gagal mengirim pesan ke server:", error);
+    }
 }
 
+// 4. Saluran REALTIME API: Mendengarkan database secara aktif
+// Jika ada pesan baru masuk dari siapapun, langsung tempelkan ke layar tanpa refresh halaman!
+supabase
+    .channel('public:messages')
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, payload => {
+        const incomingData = payload.new;
+        // Hanya tempel pesan jika pesan tersebut berasal dari browser orang lain (pesan milik sendiri sudah di-handle oleh pembuat gelembung otomatis saat load/input)
+        const bubbleType = (incomingData.sender_id === MY_SENDER_ID) ? "msg-outgoing" : "msg-incoming";
+        
+        // Cek jika jendela chat sedang terbuka di layar, langsung tampilkan pesannya
+        const chatWidget = document.getElementById('liveChatWidget');
+        if (chatWidget.style.display === 'flex') {
+            appendMessage(incomingData.text, bubbleType);
+        }
+    })
+    .subscribe();
+
+// 5. Fungsi Render Elemen Balon Teks ke Layar HTML
 function appendMessage(text, className) {
     const chatBody = document.getElementById('chatBoxBody');
     const msgEl = document.createElement('div');
     msgEl.className = `message ${className}`;
     msgEl.innerText = text;
     chatBody.appendChild(msgEl);
-    chatBody.scrollTop = chatBody.scrollHeight;
+    chatBody.scrollTop = chatBody.scrollHeight; // Gulir otomatis layar chat ke posisi paling bawah
 }
 
-function displaySystemMessage(htmlText) {
-    const chatBody = document.getElementById('chatBoxBody');
-    const infoEl = document.createElement('div');
-    infoEl.className = "message msg-incoming";
-    infoEl.style.background = "#2a1b40";
-    infoEl.innerHTML = htmlText;
-    chatBody.appendChild(infoEl);
-    chatBody.scrollTop = chatBody.scrollHeight;
-}
-
+// 6. Fungsi Menangani Input Ketukan Tombol Enter di Keyboard
 function handleChatKeyPress(event) {
     if (event.key === 'Enter') {
         sendChatMessage();
     }
-        }
+}
+
+// 7. BONUS FITUR: Pembersihan manual dari ikon kunci rahasia owner 
+// (Database sebenarnya sudah menghapus otomatis via Trigger SQL, ini adalah alternatif tombol pembersih instan)
+async function forceCleanOldMessages() {
+    const konfirmasi = confirm("Apakah Anda selaku Owner ingin membersihkan seluruh data chat lama sekarang?");
+    if (!konfirmasi) return;
+
+    const { error } = await supabase
+        .from('messages')
+        .delete()
+        .filter('created_at', 'lt', new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString());
+
+    if (!error) {
+        alert("Pembersihan chat manual sukses!");
+        loadChatMessages();
+    } else {
+        alert("Gagal melakukan pembersihan.");
+    }
+}
+
         
