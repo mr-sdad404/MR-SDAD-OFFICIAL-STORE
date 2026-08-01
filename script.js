@@ -285,7 +285,7 @@ const daftarIklanSdad = [
     {
         versi: "MR-SDAD BROADCAST SYSTEM v6.2.5",
         gambar: "website.png",
-        linkWA: "https://wa.me/6285133431132",
+        linkWA: "https://chat.whatsapp.com/L16JWG3URT6FWhyzGkndjq",
         htmlTeks: `
             <strong style="color: #ffff00; display: block; margin-bottom: 8px; text-align: center; font-family: 'Orbitron', sans-serif;">🔥 JASA IKLAN🔥</strong>
             • 📢 OPEN JASA IKLAN ALL SERVICE!<br>
@@ -299,7 +299,7 @@ const daftarIklanSdad = [
     {
         versi: "MR-SDAD FLASH SALE NODE v2.1.5",
         gambar: "promo.png", // Menggunakan gambar kedua untuk iklan kedua
-        linkWA: "https://wa.me/6285133431132", // Bisa dimasukkan link grup JB WhatsApp Anda
+        linkWA: "https://chat.whatsapp.com/L16JWG3URT6FWhyzGkndjq", // Bisa dimasukkan link grup JB WhatsApp Anda
         htmlTeks: `
             <strong style="color: #ff00ff; display: block; margin-bottom: 8px; text-align: center; font-family: 'Orbitron', sans-serif;">⚡ DISKON EVENT SPECIAL ⚡</strong>
             • 🤖 DISKON SEWA BOT: Dapatkan potongan harga khusus untuk paket Permanen!<br>
@@ -311,7 +311,7 @@ const daftarIklanSdad = [
     {
         versi: "RUANG PROMOSI (KOSONG) NODE v2.1.5",
         gambar: "promo.png", // Menggunakan gambar kedua untuk iklan kedua
-        linkWA: "https://wa.me/6285133431132", // Bisa dimasukkan link grup JB WhatsApp Anda
+        linkWA: "https://chat.whatsapp.com/L16JWG3URT6FWhyzGkndjq", // Bisa dimasukkan link grup JB WhatsApp Anda
         htmlTeks: `
             <strong style="color: #ff00ff; display: block; margin-bottom: 8px; text-align: center; font-family: 'Orbitron', sans-serif;">⚡ RUANG PROMOSI KOSONG ⚡</strong>
             • 📢 RUANG PROMOSI INI (KOSONG)<br>
