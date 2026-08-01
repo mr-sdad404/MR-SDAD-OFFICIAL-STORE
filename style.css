@@ -1100,8 +1100,8 @@ footer {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 10px;
-  align-self: flex-start; /* Posisi di kiri atas kolam */
+  margin-bottom: 12px;
+  align-self: flex-start;
   padding-left: 5px;
 }
 
@@ -1124,32 +1124,62 @@ footer {
   text-shadow: 0 0 5px rgba(0, 255, 102, 0.5);
 }
 
-/* Animasi Denyut Lampu */
 @keyframes pulse-green {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7);
-  }
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 8px rgba(0, 255, 102, 0);
-  }
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(0, 255, 102, 0);
-  }
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(0, 255, 102, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 102, 0); }
 }
 
-/* Kolam / Kotak Indikator */
-.counter-pool {
+/* ======================================================= */
+/* ELEMEN BARU: Efek Lampu Panah Berputar Warna-Warni     */
+/* ======================================================= */
+.border-chase-wrapper {
+  position: relative;
   width: 100%;
-  background: rgba(10, 10, 25, 0.75); /* Warna dasar kolam gelap murni */
-  border: 2px solid #ff007f;
+  padding: 3px; /* Ketebalan jalur lampu luar */
+  background: transparent;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Membuat pola lampu panah gradien warna-warni yang berputar */
+.border-chase-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  /* Pola gradien berulang tajam menyerupai tumpukan panah/garis mengalir */
+  background: repeating-conic-gradient(
+    from 0deg,
+    #ff007f 0deg 15deg,
+    #00ffcc 20deg 35deg,
+    #ff00ff 40deg 55deg,
+    #00ff66 60deg 75deg,
+    transparent 80deg 120deg
+  );
+  animation: rotate-arrows 4s linear infinite;
+  z-index: 1;
+}
+
+/* Animasi Perputaran Lampu Mengelilingi Bingkai */
+@keyframes rotate-arrows {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Kolam / Kotak Indikator Utama (Menutupi bagian dalam lingkaran animasi) */
+.counter-pool {
+  position: relative;
+  width: 100%;
+  background: #0a0a19; /* Warna gelap murni agar kontras dengan lampu luar */
   border-radius: 12px;
-  padding: 18px;
+  padding: 20px;
   text-align: center;
-  box-shadow: inset 0 0 15px rgba(255, 0, 127, 0.3), 0 0 15px rgba(255, 0, 127, 0.2);
-  backdrop-filter: blur(5px);
+  box-shadow: inset 0 0 20px rgba(255, 0, 127, 0.2);
+  z-index: 2; /* Menumpuk di atas animasi putaran agar aman */
 }
 
 .pool-title {
@@ -1167,5 +1197,4 @@ footer {
   font-weight: 900;
   color: #ffffff;
   text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 30px #ff007f;
-   }
-   
+}
