@@ -1,6 +1,7 @@
 // Database State Keranjang Belanjaan
 let cart = [];
 const ownerWhatsApp = "6285133431132";
+const storeGrop = "https://chat.whatsapp.com/L16JWG3URT6FWhyzGkndjq";
 
 // DOM Elemen Picker
 const cartCount = document.getElementById('cart-count');
@@ -195,15 +196,9 @@ if (finalWaBtn) {
         // Encode text agar aman dibaca URL browser
         const encodedMessage = encodeURIComponent(message);
         
-        // 1. Variabel tautan grup store Anda (bisa diganti kodenya saja atau link penuhnya)
-const storeGroupInput = "https://chat.whatsapp.com/L16JWG3URT6FWhyzGkndjq";
-
-// 2. Sistem otomatis untuk mengambil kode unik grup (aman jika admin salah input link penuh)
-const groupCode = storeGroupInput.replace("https://chat.whatsapp.com/", "").trim();
-
-// 3. MODIFIKASI KODE: Format URL khusus untuk mengundang ke Grup WhatsApp
-const waURL = `https://whatsapp.com{groupCode}`;
-
+        // Format pemanggilan URL WhatsApp
+        const waURL = `https://wa.me/${storeGrop}?text=${encodedMessage}`;
+        
 // 4. Eksekusi pengalihan pelanggan ke grup store (buka di tab baru)
 window.open(waURL, '_blank');
         
