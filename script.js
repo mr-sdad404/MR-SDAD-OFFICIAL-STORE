@@ -199,7 +199,7 @@ if (finalWaBtn) {
         // Format pemanggilan URL WhatsApp
         const waURL = `https://wa.me/${storeGrop}?text=${encodedMessage}`;
         
-// 4. Eksekusi pengalihan pelanggan ke grup store (buka di tab baru)
+// Alihkan pengguna ke tab WhatsApp baru
 window.open(waURL, '_blank');
         
         // Otomatis tutup modal dan bersihkan form keranjang serta catatan setelah checkout
