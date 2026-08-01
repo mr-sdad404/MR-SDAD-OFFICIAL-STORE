@@ -636,3 +636,24 @@ function handleChatKeyPress(event) {
     }
         }
         
+// Animasi Konter Pelanggan Mr-Sdad Store
+document.addEventListener("DOMContentLoaded", () => {
+  const targetCount = 1250; // <== UBAH ANGKA INI sesuai jumlah pelanggan Anda
+  const countElement = document.getElementById("customer-count");
+  
+  if (countElement) {
+    let currentCount = 0;
+    const speed = 25; // Kecepatan animasi (semakin kecil semakin cepat)
+    
+    const updateCounter = () => {
+      const increment = Math.ceil(targetCount / 50); // Kelipatan kenaikan
+      if (currentCount < targetCount) {
+        currentCount += increment;
+        if (currentCount > targetCount) currentCount = targetCount;
+        countElement.innerText = currentCount.toLocaleString('id-ID');
+        setTimeout(updateCounter, speed);
+      }
+    };
+    updateCounter();
+  }
+});
