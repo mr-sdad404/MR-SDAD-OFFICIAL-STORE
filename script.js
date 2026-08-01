@@ -1,7 +1,6 @@
 // Database State Keranjang Belanjaan
 let cart = [];
 const ownerWhatsApp = "6285133431132";
-const storeGrop = "https://chat.whatsapp.com/L16JWG3URT6FWhyzGkndjq";
 
 // DOM Elemen Picker
 const cartCount = document.getElementById('cart-count');
@@ -197,10 +196,10 @@ if (finalWaBtn) {
         const encodedMessage = encodeURIComponent(message);
         
         // Format pemanggilan URL WhatsApp
-        const waURL = `${storeGrop}?text=${encodedMessage}`;
+        const waURL = `https://wa.me/${ownerWhatsApp}?text=${encodedMessage}`;
         
-// Alihkan pengguna ke tab WhatsApp baru
-window.open(waURL, '_blank');
+       // Alihkan pengguna ke tab WhatsApp baru
+        window.open(waURL, '_blank');
         
         // Otomatis tutup modal dan bersihkan form keranjang serta catatan setelah checkout
         closeQrisModal();
