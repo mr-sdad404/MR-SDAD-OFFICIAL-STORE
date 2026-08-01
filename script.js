@@ -195,11 +195,17 @@ if (finalWaBtn) {
         // Encode text agar aman dibaca URL browser
         const encodedMessage = encodeURIComponent(message);
         
-        // Format pemanggilan URL WhatsApp
-        const waURL = `https://wa.me/${ownerWhatsApp}?text=${encodedMessage}`;
+        // 1. Variabel tautan grup store Anda (bisa diganti kodenya saja atau link penuhnya)
+const storeGroupInput = "https://chat.whatsapp.com/L16JWG3URT6FWhyzGkndjq";
 
-        // Alihkan pengguna ke tab WhatsApp baru
-        window.open(waURL, '_blank');
+// 2. Sistem otomatis untuk mengambil kode unik grup (aman jika admin salah input link penuh)
+const groupCode = storeGroupInput.replace("https://chat.whatsapp.com/", "").trim();
+
+// 3. MODIFIKASI KODE: Format URL khusus untuk mengundang ke Grup WhatsApp
+const waURL = `https://whatsapp.com{groupCode}`;
+
+// 4. Eksekusi pengalihan pelanggan ke grup store (buka di tab baru)
+window.open(waURL, '_blank');
         
         // Otomatis tutup modal dan bersihkan form keranjang serta catatan setelah checkout
         closeQrisModal();
