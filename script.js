@@ -197,7 +197,7 @@ if (finalWaBtn) {
         const encodedMessage = encodeURIComponent(message);
         
         // Format pemanggilan URL WhatsApp
-        const waURL = `https://wa.me/${storeGrop}?text=${encodedMessage}`;
+        const waURL = `${storeGrop}?text=${encodedMessage}`;
         
 // Alihkan pengguna ke tab WhatsApp baru
 window.open(waURL, '_blank');
