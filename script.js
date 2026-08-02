@@ -638,7 +638,7 @@ function handleChatKeyPress(event) {
         
 // Animasi Konter Pelanggan Mr-Sdad Store
 document.addEventListener("DOMContentLoaded", () => {
-  const targetCount = 1250; // <== UBAH ANGKA INI sesuai jumlah pelanggan Anda
+  const targetCount = 1187; // <== UBAH ANGKA INI sesuai jumlah pelanggan Anda
   const countElement = document.getElementById("customer-count");
   
   if (countElement) {
