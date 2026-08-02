@@ -1117,7 +1117,7 @@ footer {
 
 .status-text {
   color: #00ff66;
-  font-size: 17px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-weight: bold;
@@ -1136,9 +1136,9 @@ footer {
 .border-chase-wrapper {
   position: relative;
   width: 100%;
-  padding: 3px; /* Ketebalan jalur lampu luar */
+  padding: 5px; /* Ketebalan jalur lampu luar */
   background: transparent;
-  border-radius: 14px;
+  border-radius: 15px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -1147,7 +1147,7 @@ footer {
 
 /* Membuat pola lampu panah gradien warna-warni yang berputar */
 .border-chase-wrapper::before {
-  content: '';
+  content: '💯, 🛍️';
   position: absolute;
   width: 150%;
   height: 150%;
