@@ -1088,8 +1088,8 @@ footer {
 /* Container Utama */
 .counter-wrapper {
   width: 90%;
-  max-width: 360px;
-  margin: 25px auto;
+  max-width: 350px;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
