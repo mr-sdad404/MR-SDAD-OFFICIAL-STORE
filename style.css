@@ -1147,7 +1147,7 @@ footer {
 
 /* Membuat pola lampu panah gradien warna-warni yang berputar */
 .border-chase-wrapper::before {
-  content: '💯, 🛍️';
+  content: '';
   position: absolute;
   width: 150%;
   height: 150%;
@@ -1160,7 +1160,7 @@ footer {
     #00ff66 60deg 75deg,
     transparent 80deg 120deg
   );
-  animation: rotate-arrows 4s linear infinite;
+  animation: rotate-arrows 2s linear infinite;
   z-index: 1;
 }
 
